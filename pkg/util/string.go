@@ -3,18 +3,20 @@ package util
 import (
 	"bytes"
 	"fmt"
-	"regexp"
 	"strings"
 	"text/template"
 )
 
-var whitespaceRegex = regexp.MustCompile(`^\s+$`)
-
 func IsStringEmpty(text string) bool {
-	if whitespaceRegex.MatchString(text) || len(text) == 0 {
+	text = Trim(text)
+	if len(text) == 0 {
 		return true
 	}
 	return false
+}
+
+func Trim(text string) string {
+	return strings.TrimSpace(text)
 }
 
 func ExecuteTemplateToString(template *template.Template, value interface{}) (output string, err error) {
