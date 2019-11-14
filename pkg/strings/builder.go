@@ -1,9 +1,13 @@
 package strings
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type Builder interface {
-	WriteString(format string, args ...interface{})
+	Write(format string, args ...interface{})
+	Writeln(format string, args ...interface{})
 	ToString() (out string)
 	ToStringReset() (out string)
 }
@@ -12,17 +16,22 @@ type builder struct {
 	stringBuilder strings.Builder
 }
 
-func (b builder) WriteString(format string, args ...interface{}) {
-	panic("implement me")
+func (builder builder) Write(format string, args ...interface{}) {
+	builder.stringBuilder.WriteString(fmt.Sprintf(format, args))
 }
 
-func (b builder) ToString() (out string) {
-	return b.stringBuilder.String()
+func (builder builder) Writeln(format string, args ...interface{}) {
+	builder.stringBuilder.WriteString(fmt.Sprintf(format, args))
+	builder.stringBuilder.WriteString("\n")
 }
 
-func (b builder) ToStringReset() (out string) {
-	out = b.stringBuilder.String()
-	b.stringBuilder.Reset()
+func (builder builder) ToString() (out string) {
+	return builder.stringBuilder.String()
+}
+
+func (builder builder) ToStringReset() (out string) {
+	out = builder.stringBuilder.String()
+	builder.stringBuilder.Reset()
 	return
 }
 
