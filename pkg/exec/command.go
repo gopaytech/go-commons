@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"github.com/fatih/color"
 	"github.com/gopaytech/go-commons/pkg/stdout"
-	"github.com/gopaytech/go-commons/pkg/util"
+	"github.com/gopaytech/go-commons/pkg/strings"
 	"io"
 	"os"
 	"os/exec"
@@ -37,9 +37,9 @@ func (c *command) ExecuteAndWait(command string, arg ...string) (combinedOutput 
 }
 
 func (c *command) ExecuteAndWaitWithEnv(env map[string]string, command string, arg ...string) (combinedOutput string, err error) {
-	stdout.ColorPrinter.Println(color.FgHiBlue, "%v %v %v", util.MapKVJoin(env), command, arg)
+	stdout.ColorPrinter.Println(color.FgHiBlue, "%v %v %v", strings.MapKVJoin(env), command, arg)
 	cmd := exec.Command(command, arg...)
-	envs := util.MapKVJoin(env)
+	envs := strings.MapKVJoin(env)
 	cmd.Env = append(os.Environ(), envs...)
 
 	byteOutput, err := cmd.CombinedOutput()
@@ -56,9 +56,9 @@ func (c *command) ExecuteAndWaitWithEnv(env map[string]string, command string, a
 }
 
 func (c *command) ExecuteWithEnv(env map[string]string, command string, arg ...string) (stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
-	stdout.ColorPrinter.Println(color.FgHiBlue, "%v %v %v", util.MapKVJoin(env), command, arg)
+	stdout.ColorPrinter.Println(color.FgHiBlue, "%v %v %v", strings.MapKVJoin(env), command, arg)
 	cmd := exec.Command(command, arg...)
-	envs := util.MapKVJoin(env)
+	envs := strings.MapKVJoin(env)
 	cmd.Env = append(os.Environ(), envs...)
 	stdOut, _ = cmd.StdoutPipe()
 	stdErr, _ = cmd.StderrPipe()

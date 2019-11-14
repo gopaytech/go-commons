@@ -1,8 +1,9 @@
-package util
+package strings
 
 import (
 	"fmt"
 	fake "github.com/brianvoe/gofakeit"
+	"github.com/gopaytech/go-commons/pkg/util"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"testing"
@@ -15,7 +16,7 @@ Please don't stop me till I'm through
 This is something I hate to do`
 
 	fileName := "/tmp/kissAndSayGoodby"
-	err := SaveStringToFile(source, fileName)
+	err := util.SaveStringToFile(source, fileName)
 	assert.Nil(t, err)
 
 	stringByte, err := ioutil.ReadFile(fileName)
@@ -57,6 +58,6 @@ func TestKVSplitFailed(t *testing.T) {
 func TestReadFromFileFailed(t *testing.T) {
 	fileName := "/tmp/zxcbasd123"
 
-	_, err := ReadFileToString(fileName)
+	_, err := util.ReadFileToString(fileName)
 	assert.NotNil(t, err)
 }
