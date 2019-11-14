@@ -1,6 +1,7 @@
 package config
 
 import (
+	"github.com/gopaytech/go-commons/pkg/encoding"
 	strings2 "github.com/gopaytech/go-commons/pkg/strings"
 	"github.com/spf13/viper"
 	"strings"
@@ -34,4 +35,14 @@ func GetArrayString(viper *viper.Viper, key string) []string {
 
 func GetStringSplit(viper *viper.Viper, key string, separator string) []string {
 	return strings.Split(viper.GetString(key), separator)
+}
+
+func GetDecodeBase64(viper *viper.Viper, key string) (plain string, err error) {
+	encodedValue := viper.GetString(key)
+	return encoding.Base64Decode(encodedValue)
+}
+
+func GetDecodeBase32(viper *viper.Viper, key string) (plain string, err error) {
+	encodedValue := viper.GetString(key)
+	return encoding.Base32Decode(encodedValue)
 }
