@@ -22,3 +22,16 @@ func NewConfig(configName string, configPath string, prefix string) *viper.Viper
 
 	return fang
 }
+
+func GetStringDefault(viper *viper.Viper, key string, defaultValue string) string {
+	viper.SetDefault(key, defaultValue)
+	return viper.GetString(key)
+}
+
+func GetArrayString(viper *viper.Viper, key string) []string {
+	return GetStringSplit(viper, key, ",")
+}
+
+func GetStringSplit(viper *viper.Viper, key string, separator string) []string {
+	return strings.Split(viper.GetString(key), separator)
+}
