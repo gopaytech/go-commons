@@ -7,6 +7,14 @@ import (
 	"strings"
 )
 
+func NewEnvConfig() *viper.Viper {
+	fang := viper.New()
+
+	fang.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+	fang.AutomaticEnv()
+	return fang
+}
+
 func NewConfig(configName string, configPath string, prefix string) *viper.Viper {
 	fang := viper.New()
 

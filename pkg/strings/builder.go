@@ -17,11 +17,11 @@ type builder struct {
 }
 
 func (builder builder) Write(format string, args ...interface{}) {
-	builder.stringBuilder.WriteString(fmt.Sprintf(format, args))
+	builder.stringBuilder.WriteString(fmt.Sprintf(format, args...))
 }
 
 func (builder builder) Writeln(format string, args ...interface{}) {
-	builder.stringBuilder.WriteString(fmt.Sprintf(format, args))
+	builder.stringBuilder.WriteString(fmt.Sprintf(format, args...))
 	builder.stringBuilder.WriteString("\n")
 }
 
