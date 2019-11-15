@@ -1,0 +1,109 @@
+package compress
+
+import (
+	"fmt"
+	"github.com/stretchr/testify/assert"
+	"io/ioutil"
+	"os"
+	"testing"
+)
+
+func TestUnTar(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-un-tar")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	written, err := UnTar(archiveReader, destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, written)
+}
+
+func TestUnTarFailed(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar.gz")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-un-tar")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	_, err = UnTar(archiveReader, destinationDir)
+	assert.NotNil(t, err)
+}
+
+func TestUnTarGz(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar.gz")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-un-tar-gz")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	written, err := UnTarGz(archiveReader, destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, written)
+}
+
+func TestUnTarGzFailed(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-un-tar-gz")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	_, err = UnTarGz(archiveReader, destinationDir)
+	assert.NotNil(t, err)
+}
+
+func TestTar(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-tar")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	written, err := UnTar(archiveReader, destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, written)
+
+	destinationFile, err := ioutil.TempFile("/tmp", "test-tar")
+	assert.Nil(t, err)
+
+	err = Tar(destinationDir, destinationFile)
+	assert.Nil(t, err)
+}
+
+func TestTarGz(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar.gz")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-tar-gz")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	written, err := UnTarGz(archiveReader, destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, written)
+
+	destinationFile, err := ioutil.TempFile("/tmp", "test-tar-gz")
+	assert.Nil(t, err)
+
+	err = TarGz(destinationDir, destinationFile)
+	assert.Nil(t, err)
+}
