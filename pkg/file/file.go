@@ -1,4 +1,4 @@
-package util
+package file
 
 import (
 	"fmt"
@@ -9,8 +9,8 @@ import (
 	"os/user"
 )
 
-func FileExists(filename string) bool {
-	info, err := os.Stat(filename)
+func Exists(filePath string) bool {
+	info, err := os.Stat(filePath)
 	if os.IsNotExist(err) {
 		return false
 	}
@@ -61,9 +61,9 @@ func ReadUrl(url string) (stream io.ReadCloser, err error) {
 	return
 }
 
-func SaveStringToFile(source string, fileName string) (err error) {
+func WriteFile(filePath string, source string) (err error) {
 	sourceByte := []byte(source)
-	err = ioutil.WriteFile(fileName, sourceByte, 0644)
+	err = ioutil.WriteFile(filePath, sourceByte, 0644)
 	return
 }
 
