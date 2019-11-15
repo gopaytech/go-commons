@@ -16,3 +16,7 @@ func Base32Decode(encoded string) (plain string, err error) {
 func Base32Encode(plain string) (encoded string) {
 	return base32.StdEncoding.EncodeToString([]byte(plain))
 }
+
+func Base32EncodeBytes(bytes []byte) (encoded string) {
+	return base32.StdEncoding.EncodeToString(bytes)
+}

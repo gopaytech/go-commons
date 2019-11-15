@@ -15,3 +15,6 @@ func Base64Encode(plain string) (encoded string) {
 	return base64.StdEncoding.EncodeToString([]byte(plain))
 }
 
+func Base64EncodeBytes(bytes []byte) (encoded string) {
+	return base64.StdEncoding.EncodeToString(bytes)
+}
