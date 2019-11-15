@@ -17,17 +17,6 @@ func Exists(filePath string) bool {
 	return !info.IsDir()
 }
 
-func HomeDir(children ...string) string {
-	usr, _ := user.Current()
-
-	home := usr.HomeDir
-	for _, child := range children {
-		home = fmt.Sprintf("%s/%s", home, child)
-	}
-
-	return home
-}
-
 func ReadFile(fileLocation string) (file io.ReadCloser, err error) {
 	return os.Open(fileLocation)
 }
