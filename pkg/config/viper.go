@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/gopaytech/go-commons/pkg/encoding"
-	strings2 "github.com/gopaytech/go-commons/pkg/strings"
+	commonsStrings "github.com/gopaytech/go-commons/pkg/strings"
 	"github.com/spf13/viper"
 	"strings"
 )
@@ -18,7 +18,7 @@ func NewEnvConfig() *viper.Viper {
 func NewConfig(configName string, configPath string, prefix string) *viper.Viper {
 	fang := viper.New()
 
-	if !strings2.IsStringEmpty(prefix) {
+	if !commonsStrings.IsStringEmpty(prefix) {
 		fang.SetEnvPrefix(prefix)
 	}
 	fang.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
