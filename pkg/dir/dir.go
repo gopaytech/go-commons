@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"os"
 	"os/user"
+	"path/filepath"
+	"strings"
 )
 
-func Exists(filePath string) bool {
-	info, err := os.Stat(filePath)
+func Exists(dirPath string) bool {
+	info, err := os.Stat(dirPath)
 	if os.IsNotExist(err) {
 		return false
 	}
@@ -23,4 +25,21 @@ func Home(children ...string) string {
 	}
 
 	return home
+}
+
+func ListFiles(directory string) (files []string, err error) {
+	baseDirectory := filepath.Clean(directory)
+	err = filepath.Walk(baseDirectory,
+		func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			if info.IsDir() {
+				return nil
+			}
+			cleanPath := strings.Replace(path, fmt.Sprintf("%s/", baseDirectory), "", 1)
+			files = append(files, cleanPath)
+			return nil
+		})
+	return
 }
