@@ -13,7 +13,7 @@ type Builder interface {
 }
 
 type builder struct {
-	stringBuilder strings.Builder
+	stringBuilder *strings.Builder
 }
 
 func (builder builder) Write(format string, args ...interface{}) {
@@ -36,6 +36,5 @@ func (builder builder) ToStringReset() (out string) {
 }
 
 func NewBuilder() Builder {
-	var stringBuilder strings.Builder
-	return &builder{stringBuilder: stringBuilder}
+	return &builder{stringBuilder: &strings.Builder{}}
 }
