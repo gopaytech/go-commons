@@ -1,29 +1,24 @@
 module github.com/gopaytech/go-commons
 
-go 1.13
+go 1.15
 
 require (
-	github.com/Azure/go-ansiterm v0.0.0-20170929234023-d6e3b3328b78 // indirect
-	github.com/Microsoft/go-winio v0.4.14 // indirect
+	github.com/Microsoft/go-winio v0.4.16 // indirect
 	github.com/brianvoe/gofakeit v3.18.0+incompatible
-	github.com/containerd/containerd v1.3.0 // indirect
-	github.com/docker/distribution v2.7.1+incompatible // indirect
-	github.com/docker/docker v1.13.1
-	github.com/docker/go-connections v0.4.0 // indirect
-	github.com/docker/go-units v0.4.0 // indirect
+	github.com/containerd/containerd v1.4.3 // indirect
+	github.com/docker/docker v17.12.0-ce-rc1.0.20200618181300-9dc6525e6118+incompatible
 	github.com/fatih/color v1.7.0
-	github.com/gorilla/mux v1.7.3 // indirect
-	github.com/mattn/go-colorable v0.1.4 // indirect
-	github.com/mattn/go-isatty v0.0.10 // indirect
-	github.com/morikuni/aec v1.0.0 // indirect
-	github.com/opencontainers/go-digest v1.0.0-rc1 // indirect
-	github.com/opencontainers/image-spec v1.0.1 // indirect
-	github.com/sirupsen/logrus v1.4.2
+	github.com/golang-migrate/migrate/v4 v4.14.1
+	github.com/gorilla/mux v1.8.0 // indirect
+	github.com/mattn/go-colorable v0.1.8 // indirect
+	github.com/rs/zerolog v1.20.0
+	github.com/sirupsen/logrus v1.7.0
+	github.com/sony/sonyflake v1.0.0
 	github.com/spf13/viper v1.5.0
-	github.com/stretchr/testify v1.3.0
-	gotest.tools v2.2.0+incompatible // indirect
-	k8s.io/client-go v0.0.0-20191111061043-a56922badea0
+	github.com/stretchr/testify v1.6.1
+	gorm.io/driver/mysql v1.0.3
+	gorm.io/gorm v1.20.11
+	k8s.io/client-go v0.20.0
 )
 
-//https://github.com/docker/engine/releases/tag/v19.03.5
-replace github.com/docker/docker => github.com/docker/engine v0.0.0-20191113042239-ea84732a7725
+replace github.com/docker/docker => github.com/docker/engine v17.12.0-ce-rc1.0.20200916142827-bd33bbf0497b+incompatible

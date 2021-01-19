@@ -1,9 +1,8 @@
 package config
 
 import (
-	"github.com/gopaytech/go-commons/pkg/encoding"
-	commonsStrings "github.com/gopaytech/go-commons/pkg/strings"
 	"github.com/spf13/viper"
+	"os"
 	"strings"
 )
 
@@ -18,7 +17,7 @@ func NewEnvConfig() *viper.Viper {
 func NewConfig(configName string, configPath string, prefix string) *viper.Viper {
 	fang := viper.New()
 
-	if !commonsStrings.IsStringEmpty(prefix) {
+	if len(strings.TrimSpace(prefix)) > 0 {
 		fang.SetEnvPrefix(prefix)
 	}
 	fang.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
@@ -26,7 +25,9 @@ func NewConfig(configName string, configPath string, prefix string) *viper.Viper
 
 	fang.SetConfigName(configName)
 	fang.AddConfigPath(".")
-	fang.AddConfigPath(configPath)
+	if _, err := os.Stat(configPath); !os.IsNotExist(err) {
+		fang.AddConfigPath(configPath)
+	}
 	_ = fang.ReadInConfig()
 
 	return fang
@@ -37,6 +38,11 @@ func GetStringDefault(viper *viper.Viper, key string, defaultValue string) strin
 	return viper.GetString(key)
 }
 
+func GetIntDefault(viper *viper.Viper, key string, defaultValue int) int {
+	viper.SetDefault(key, defaultValue)
+	return viper.GetInt(key)
+}
+
 func GetArrayString(viper *viper.Viper, key string) []string {
 	return GetStringSplit(viper, key, ",")
 }
@@ -45,12 +51,7 @@ func GetStringSplit(viper *viper.Viper, key string, separator string) []string {
 	return strings.Split(viper.GetString(key), separator)
 }
 
-func GetDecodeBase64(viper *viper.Viper, key string) (plain string, err error) {
-	encodedValue := viper.GetString(key)
-	return encoding.Base64Decode(encodedValue)
-}
-
-func GetDecodeBase32(viper *viper.Viper, key string) (plain string, err error) {
-	encodedValue := viper.GetString(key)
-	return encoding.Base32Decode(encodedValue)
+func GetBoolDefault(viper *viper.Viper, key string, defaultValue bool) bool {
+	viper.SetDefault(key, defaultValue)
+	return viper.GetBool(key)
 }
