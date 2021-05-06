@@ -1,32 +1,46 @@
-SHELL := /bin/bash
-
 .EXPORT_ALL_VARIABLES:
 OUT_DIR := ./_output
 BIN_DIR := ./bin
 
+PACKAGE=github.com/gopaytech/go-commons
+CURRENT_DIR=$(shell pwd)
+
+VERSION=$(shell cat ${CURRENT_DIR}/VERSION)
+BUILD_DATE=$(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
+GIT_COMMIT=$(shell git rev-parse --short HEAD)
+GIT_TAG=$(shell if [ -z "`git status --porcelain`" ]; then git describe --exact-match --tags HEAD 2>/dev/null; fi)
+
 $(shell mkdir -p $(OUT_DIR) $(BIN_DIR))
+
+# perform static compilation
+STATIC_BUILD?=true
+
+override LDFLAGS += \
+  -X ${PACKAGE}.version=${VERSION} \
+  -X ${PACKAGE}.buildDate=${BUILD_DATE} \
+  -X ${PACKAGE}.gitCommit=${GIT_COMMIT}
+
+ifeq (${STATIC_BUILD}, true)
+override LDFLAGS += -extldflags "-static"
+endif
+
+ifneq (${GIT_TAG},)
+IMAGE_TAG=${GIT_TAG}
+LDFLAGS += -X ${PACKAGE}.gitTag=${GIT_TAG}
+else
+IMAGE_TAG?=$(GIT_COMMIT)
+endif
 
 # Code build targets
 .PHONY: vendor
 vendor:
 	go mod vendor
 
-.PHONY: tidy
-tidy:
-	go mod tidy
-
-.PHONY: fmt
-fmt:
-	go fmt ./...
-
 # Main Test Targets (without docker)
 .PHONY: test
 test:
-	ENABLE_INTEGRATION_TEST=false \
 	go test -race -coverprofile=$(OUT_DIR)/coverage.out ./...
 
-.PHONY: itest
-itest:
-	ENABLE_INTEGRATION_TEST=true \
-	go test -p 1 -race -coverprofile=$(OUT_DIR)/coverage.out ./...
-
+.PHONY: integration-test
+integration-test:
+	go test -race -tags=integration -coverprofile=$(OUT_DIR)/coverage.out ./...

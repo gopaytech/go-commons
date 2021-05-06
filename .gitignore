@@ -41,3 +41,4 @@ Thumbs.db
 _output/
 bin/
 vendor/
+/node_modules/
