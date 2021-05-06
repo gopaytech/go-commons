@@ -16,10 +16,10 @@ jobs:
     - name: Setup make
       run: sudo apt-get update && sudo apt-get install -y build-essential git curl
       
-    - name: Set up Go 1.15
+    - name: Set up Go 1.16
       uses: actions/setup-go@v2
       with:
-        go-version: ^1.15
+        go-version: ^1.16
         
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
@@ -34,4 +34,4 @@ jobs:
       env:
         TEST_DOCKER_HOST: ${{ secrets.TEST_DOCKER_HOST }}
         TEST_DOCKER_REGISTRIES: ${{ secrets.TEST_DOCKER_REGISTRIES }}
-      run: make integration-test
+      run: TEST_DOCKER_HOST=$TEST_DOCKER_HOST make integration-test
