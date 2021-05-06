@@ -35,4 +35,6 @@ jobs:
       env:
         TEST_DOCKER_HOST: ${{ secrets.TEST_DOCKER_HOST }}
         TEST_DOCKER_REGISTRIES: ${{ secrets.TEST_DOCKER_REGISTRIES }}
-      run: TEST_DOCKER_HOST="$TEST_DOCKER_HOST" TEST_DOCKER_REGISTRIES="$TEST_DOCKER_REGISTRIES" make integration-test
+      run: |
+        echo "$TEST_DOCKER_HOST"
+        echo $TEST_DOCKER_REGISTRIES
