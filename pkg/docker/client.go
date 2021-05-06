@@ -1,9 +1,15 @@
 package docker
 
 import (
+	"context"
+	"encoding/json"
 	"fmt"
+	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/client"
+	"github.com/gopaytech/go-commons/pkg/config"
+	"github.com/gopaytech/go-commons/pkg/encoding"
 	"github.com/gopaytech/go-commons/pkg/strings"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -90,17 +96,73 @@ func (c *ClientConfig) DockerOps() (ops []client.Opt) {
 	return
 }
 
-func NewDefaultClient() (dockerClient *client.Client, err error) {
-	return NewClientWithConfig(ClientConfig{})
+func NewDefaultDocker() (dockerClient *client.Client, err error) {
+	return NewDockerWithConfig(ClientConfig{})
 }
 
-func NewClient(host string) (dockerClient *client.Client, err error) {
-	return NewClientWithConfig(ClientConfig{
+func NewDockerWithHost(host string) (dockerClient *client.Client, err error) {
+	return NewDockerWithConfig(ClientConfig{
 		Host: host,
 	})
 }
 
-func NewClientWithConfig(clientConfig ClientConfig) (dockerClient *client.Client, err error) {
+func NewDockerWithConfig(clientConfig ClientConfig) (dockerClient *client.Client, err error) {
 	dockerClient, err = client.NewClientWithOpts(clientConfig.DockerOps()...)
 	return
+}
+
+func ImageBuild(client *client.Client,
+	tar io.Reader,
+	dockerfileName string,
+	tags []string,
+	args map[string]string,
+) (output io.ReadCloser, osType string, err error) {
+	return ImageBuildWithOpts(client, tar, dockerfileName, tags, args, types.ImageBuildOptions{})
+}
+
+func ImageBuildWithOpts(client *client.Client,
+	tar io.Reader,
+	dockerfileName string,
+	tags []string,
+	args map[string]string,
+	ops types.ImageBuildOptions,
+) (output io.ReadCloser, osType string, err error) {
+
+	if !strings.IsStringEmpty(dockerfileName) {
+		ops.Dockerfile = dockerfileName
+	}
+
+	if len(tags) > 0 {
+		ops.Tags = tags
+	}
+
+	if len(args) > 0 {
+		buildArgs := map[string]*string{}
+		for key, value := range args {
+			buildArgs[key] = config.String(value)
+		}
+
+		ops.BuildArgs = buildArgs
+	}
+
+	response, err := client.ImageBuild(context.Background(), tar, ops)
+	if err != nil {
+		return
+	}
+
+	output = response.Body
+	osType = response.OSType
+
+	return
+}
+
+func ImagePush(client *client.Client, imageTag string, authConfig types.AuthConfig) (io.ReadCloser, error) {
+	registryAuthJson, _ := json.Marshal(authConfig)
+	registryAuth := encoding.Base64EncodeBytes(registryAuthJson)
+
+	imagePushOption := types.ImagePushOptions{
+		RegistryAuth: registryAuth,
+	}
+
+	return client.ImagePush(context.Background(), imageTag, imagePushOption)
 }

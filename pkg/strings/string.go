@@ -19,6 +19,16 @@ func Trim(text string) string {
 	return strings.TrimSpace(text)
 }
 
+func CleanEmptyString(s []string) []string {
+	var r []string
+	for _, str := range s {
+		if !IsStringEmpty(str) {
+			r = append(r, str)
+		}
+	}
+	return r
+}
+
 func ExecuteTemplateToString(template *template.Template, value interface{}) (output string, err error) {
 	stringBuffer := bytes.NewBufferString("")
 	err = template.Execute(stringBuffer, value)

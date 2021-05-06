@@ -55,3 +55,20 @@ func GetBoolDefault(viper *viper.Viper, key string, defaultValue bool) bool {
 	viper.SetDefault(key, defaultValue)
 	return viper.GetBool(key)
 }
+
+func GetOsEnv() map[string]string {
+	result := map[string]string{}
+	for _, e := range os.Environ() {
+		pair := strings.SplitN(e, "=", 2)
+		if len(pair[0]) > 0 {
+			result[pair[0]] = pair[1]
+		}
+	}
+	return result
+}
+
+func String(v string) *string {
+	p := new(string)
+	*p = v
+	return p
+}
