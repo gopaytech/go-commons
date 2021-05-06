@@ -31,4 +31,7 @@ jobs:
       run: make test
       
     - name: Integration Test
+      env:
+        TEST_DOCKER_HOST: ${{ secrets.TEST_DOCKER_HOST }}
+        TEST_DOCKER_REGISTRIES: ${{ secrets.TEST_DOCKER_REGISTRIES }}
       run: make integration-test
