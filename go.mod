@@ -8,6 +8,7 @@ require (
 	github.com/docker/docker v20.10.6+incompatible
 	github.com/fatih/color v1.10.0
 	github.com/golang-migrate/migrate/v4 v4.14.1
+	github.com/google/uuid v1.2.0 // indirect
 	github.com/goreleaser/nfpm v1.10.3
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
