@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/gopaytech/go-commons/compare/v0.3.0...v0.4.0) (2021-05-07)
+
+
+### Features
+
+* add job helper for k8s ([45931a9](https://github.com/gopaytech/go-commons/commit/45931a90fecea78db9a3e8562e6f70a11526dfcc))
+
 # [0.3.0](https://github.com/gopaytech/go-commons/compare/v0.2.2...v0.3.0) (2021-05-07)
 
 
