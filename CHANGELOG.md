@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/gopaytech/go-commons/compare/v0.2.2...v0.3.0) (2021-05-07)
+
+
+### Features
+
+* separate docker test to local tag, to exclute those test on gitlab workflow ([4a01a26](https://github.com/gopaytech/go-commons/commit/4a01a261bb6354131f30bb87e24894966ce4eea5))
+
 ## [0.2.2](https://github.com/gopaytech/go-commons/compare/v0.2.1...v0.2.2) (2021-05-06)
 
 
