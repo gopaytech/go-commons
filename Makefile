@@ -41,6 +41,12 @@ vendor:
 test:
 	go test -race -coverprofile=$(OUT_DIR)/coverage.out ./...
 
+# Integration test executed by github workflow
 .PHONY: integration-test
 integration-test:
 	go test -race -tags=integration -coverprofile=$(OUT_DIR)/coverage.out ./...
+
+# Local Integration test only able to be executed on local with docker engine present
+.PHONY: local-integration-test
+local-integration-test:
+	go test -race -tags=local,integration -coverprofile=$(OUT_DIR)/coverage.out ./...
