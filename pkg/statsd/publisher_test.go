@@ -3,7 +3,6 @@ package statsd_test
 import (
 	"github.com/gopaytech/go-commons/pkg/statsd"
 	"testing"
-
 )
 
 type publisherTestContext struct {
