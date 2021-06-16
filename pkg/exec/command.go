@@ -100,6 +100,7 @@ func ScanAndCloseTimeout(out io.ReadCloser, timeout time.Duration, ops func(stri
 	valueChan := make(chan string, 1)
 
 	go func() {
+		defer close(valueChan)
 		for scanner.Scan() {
 			valueChan <- string(scanner.Bytes())
 		}
@@ -107,11 +108,14 @@ func ScanAndCloseTimeout(out io.ReadCloser, timeout time.Duration, ops func(stri
 
 	for {
 		select {
-		case value := <-valueChan:
-			ops(value)
-			break
+		case value, ok := <-valueChan:
+			if ok {
+				ops(value)
+				break
+			} else {
+				return
+			}
 		case <-timeoutChan:
-			close(valueChan)
 			return
 		}
 	}

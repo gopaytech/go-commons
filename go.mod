@@ -3,6 +3,7 @@ module github.com/gopaytech/go-commons
 go 1.16
 
 require (
+	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/brianvoe/gofakeit v3.18.0+incompatible
 	github.com/containerd/containerd v1.4.3 // indirect
 	github.com/docker/docker v20.10.6+incompatible
@@ -28,6 +29,7 @@ require (
 	gopkg.in/alexcesaro/statsd.v2 v2.0.0
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 	gorm.io/driver/mysql v1.0.6
+	gorm.io/driver/postgres v1.1.0
 	gorm.io/gorm v1.21.9
 	gotest.tools/v3 v3.0.3 // indirect
 	k8s.io/api v0.21.0
