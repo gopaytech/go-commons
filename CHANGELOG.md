@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/gopaytech/go-commons/compare/v0.4.0...v0.5.0) (2021-06-16)
+
+
+### Features
+
+* add orm client for postgresql ([3f0b1eb](https://github.com/gopaytech/go-commons/commit/3f0b1ebff2010fd806f4f8301b36b62eea41a3be))
+
 # [0.4.0](https://github.com/gopaytech/go-commons/compare/v0.3.0...v0.4.0) (2021-05-07)
 
 
