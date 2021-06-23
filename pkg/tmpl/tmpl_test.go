@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestFileWalk(t *testing.T) {
+func FileWalk(t *testing.T) {
 	path := "/home/jasoet/Document/Template/vanilla-gcloud-compute-template"
 	result, err := TemplateScan(path, IgnoreGit(), "tmpl")
 	if err != nil {
