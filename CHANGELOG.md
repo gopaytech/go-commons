@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/gopaytech/go-commons/compare/v0.5.0...v0.6.0) (2021-06-23)
+
+
+### Features
+
+* separate db migrate to mysql and postgresql ([72a667e](https://github.com/gopaytech/go-commons/commit/72a667ebd1c42c3f1c0a8c2c3f0cf24403f6ecaf))
+
 # [0.5.0](https://github.com/gopaytech/go-commons/compare/v0.4.0...v0.5.0) (2021-06-16)
 
 
