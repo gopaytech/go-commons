@@ -21,6 +21,22 @@ func SetPrettyOutput() {
 	log.Logger = zerolog.New(output).With().Timestamp().Logger().Level(zerolog.GlobalLevel())
 }
 
+func I() *zerolog.Event {
+	return log.Info()
+}
+
+func D() *zerolog.Event {
+	return log.Debug()
+}
+
+func W() *zerolog.Event {
+	return log.Warn()
+}
+
+func E() *zerolog.Event {
+	return log.Error()
+}
+
 func Info(format string, msgs ...interface{}) {
 	log.Info().Msgf(format, msgs...)
 }
