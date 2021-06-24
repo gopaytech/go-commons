@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/gopaytech/go-commons/compare/v0.6.0...v0.6.1) (2021-06-24)
+
+
+### Bug Fixes
+
+* add zerolog function to return event ([245809f](https://github.com/gopaytech/go-commons/commit/245809f8ed56c4e8b92a0a4f3f299cf6c18a37e6))
+
 # [0.6.0](https://github.com/gopaytech/go-commons/compare/v0.5.0...v0.6.0) (2021-06-23)
 
 
