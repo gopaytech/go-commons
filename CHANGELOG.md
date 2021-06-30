@@ -1,3 +1,10 @@
+## [0.7.2](https://github.com/gopaytech/go-commons/compare/v0.7.1...v0.7.2) (2021-06-30)
+
+
+### Bug Fixes
+
+* modify README to trigger version update ([5dcbd32](https://github.com/gopaytech/go-commons/commit/5dcbd32e2f135e5c5b7f8d540beafe39a8dab199))
+
 ## [0.7.1](https://github.com/gopaytech/go-commons/compare/v0.7.0...v0.7.1) (2021-06-30)
 
 
