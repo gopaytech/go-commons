@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/gopaytech/go-commons/compare/v0.6.1...v0.7.0) (2021-06-30)
+
+
+### Features
+
+* add zlog support for asynq ([25b81a6](https://github.com/gopaytech/go-commons/commit/25b81a61fb89cfb3b138057e348c47e3256b5d8a))
+
 ## [0.6.1](https://github.com/gopaytech/go-commons/compare/v0.6.0...v0.6.1) (2021-06-24)
 
 
