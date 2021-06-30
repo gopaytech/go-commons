@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/gopaytech/go-commons/compare/v0.7.0...v0.7.1) (2021-06-30)
+
+
+### Bug Fixes
+
+* export var instead of struct ([c94a806](https://github.com/gopaytech/go-commons/commit/c94a806a7dd670ea1dbfd1432dcb27c544c295a2))
+
 # [0.7.0](https://github.com/gopaytech/go-commons/compare/v0.6.1...v0.7.0) (2021-06-30)
 
 
