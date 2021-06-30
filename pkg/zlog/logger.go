@@ -52,3 +52,7 @@ func Warn(format string, msgs ...interface{}) {
 func Error(format string, msgs ...interface{}) {
 	log.Error().Msgf(format, msgs...)
 }
+
+func Fatal(format string, msgs ...interface{}) {
+	log.Fatal().Msgf(format, msgs...)
+}
