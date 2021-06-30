@@ -5,7 +5,9 @@ import (
 	"github.com/spf13/cast"
 )
 
-type Logger struct {
+var Logger = &LoggerAsynq{}
+
+type LoggerAsynq struct {
 }
 
 func splitArgs(args ...interface{}) (format string, arguments []interface{}) {
@@ -19,22 +21,22 @@ func splitArgs(args ...interface{}) (format string, arguments []interface{}) {
 	return cast.ToString(args[0]), args[1:]
 }
 
-func (a *Logger) Debug(args ...interface{}) {
+func (a *LoggerAsynq) Debug(args ...interface{}) {
 	zlog.Debug(splitArgs(args))
 }
 
-func (a *Logger) Info(args ...interface{}) {
+func (a *LoggerAsynq) Info(args ...interface{}) {
 	zlog.Info(splitArgs(args))
 }
 
-func (a *Logger) Warn(args ...interface{}) {
+func (a *LoggerAsynq) Warn(args ...interface{}) {
 	zlog.Warn(splitArgs(args))
 }
 
-func (a *Logger) Error(args ...interface{}) {
+func (a *LoggerAsynq) Error(args ...interface{}) {
 	zlog.Error(splitArgs(args))
 }
 
-func (a *Logger) Fatal(args ...interface{}) {
+func (a *LoggerAsynq) Fatal(args ...interface{}) {
 	zlog.Fatal(splitArgs(args))
 }
