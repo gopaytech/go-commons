@@ -1,6 +1,7 @@
 package zlog
 
 import (
+	"context"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"os"
@@ -37,6 +38,10 @@ func E() *zerolog.Event {
 	return log.Error()
 }
 
+func F() *zerolog.Event {
+	return log.Fatal()
+}
+
 func Info(format string, msgs ...interface{}) {
 	log.Info().Msgf(format, msgs...)
 }
@@ -55,4 +60,8 @@ func Error(format string, msgs ...interface{}) {
 
 func Fatal(format string, msgs ...interface{}) {
 	log.Fatal().Msgf(format, msgs...)
+}
+
+func Ctx(ctx context.Context) *zerolog.Logger {
+	return log.Ctx(ctx)
 }
