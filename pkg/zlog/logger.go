@@ -62,6 +62,26 @@ func Fatal(format string, msgs ...interface{}) {
 	log.Fatal().Msgf(format, msgs...)
 }
 
+func InfoF(fields map[string]interface{}, format string, msgs ...interface{}) {
+	log.Info().Fields(fields).Msgf(format, msgs...)
+}
+
+func DebugF(fields map[string]interface{}, format string, msgs ...interface{}) {
+	log.Debug().Fields(fields).Msgf(format, msgs...)
+}
+
+func WarnF(fields map[string]interface{}, format string, msgs ...interface{}) {
+	log.Warn().Fields(fields).Msgf(format, msgs...)
+}
+
+func ErrorF(fields map[string]interface{}, err error, format string, msgs ...interface{}) {
+	log.Error().Fields(fields).Stack().Err(err).Msgf(format, msgs...)
+}
+
+func FatalF(fields map[string]interface{}, format string, msgs ...interface{}) {
+	log.Fatal().Fields(fields).Msgf(format, msgs...)
+}
+
 func Ctx(ctx context.Context) *zerolog.Logger {
 	return log.Ctx(ctx)
 }
