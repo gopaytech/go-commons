@@ -1,3 +1,10 @@
+## [0.8.1](https://github.com/gopaytech/go-commons/compare/v0.8.0...v0.8.1) (2021-07-08)
+
+
+### Bug Fixes
+
+* asynq logger ([409c804](https://github.com/gopaytech/go-commons/commit/409c804888c37b0d749417a79f4f106b72ff3f5e))
+
 # [0.8.0](https://github.com/gopaytech/go-commons/compare/v0.7.2...v0.8.0) (2021-07-08)
 
 
