@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/gopaytech/go-commons/compare/v0.7.2...v0.8.0) (2021-07-08)
+
+
+### Features
+
+* add log for asynq, add missing fatal function ([3396cb3](https://github.com/gopaytech/go-commons/commit/3396cb33a97c7369349a3bcb13414abc9f3739f4))
+
 ## [0.7.2](https://github.com/gopaytech/go-commons/compare/v0.7.1...v0.7.2) (2021-06-30)
 
 
