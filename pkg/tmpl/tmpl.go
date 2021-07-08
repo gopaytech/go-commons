@@ -42,7 +42,7 @@ func (result *ScanResult) TemplateList() (list []string) {
 	return
 }
 
-// result should be sorted
+// DirList result should be sorted
 func (result *ScanResult) DirList() (list []string) {
 	list = []string{}
 	for key, value := range result.TemplateMap {
