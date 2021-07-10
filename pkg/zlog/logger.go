@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+type LogFields map[string]interface{}
+
 func Initialize(debug bool) {
 	if debug {
 		zerolog.SetGlobalLevel(zerolog.DebugLevel)
@@ -62,23 +64,23 @@ func Fatal(format string, msgs ...interface{}) {
 	log.Fatal().Msgf(format, msgs...)
 }
 
-func InfoF(fields map[string]interface{}, format string, msgs ...interface{}) {
+func InfoF(fields LogFields, format string, msgs ...interface{}) {
 	log.Info().Fields(fields).Msgf(format, msgs...)
 }
 
-func DebugF(fields map[string]interface{}, format string, msgs ...interface{}) {
+func DebugF(fields LogFields, format string, msgs ...interface{}) {
 	log.Debug().Fields(fields).Msgf(format, msgs...)
 }
 
-func WarnF(fields map[string]interface{}, format string, msgs ...interface{}) {
+func WarnF(fields LogFields, format string, msgs ...interface{}) {
 	log.Warn().Fields(fields).Msgf(format, msgs...)
 }
 
-func ErrorF(fields map[string]interface{}, err error, format string, msgs ...interface{}) {
+func ErrorF(fields LogFields, err error, format string, msgs ...interface{}) {
 	log.Error().Fields(fields).Stack().Err(err).Msgf(format, msgs...)
 }
 
-func FatalF(fields map[string]interface{}, format string, msgs ...interface{}) {
+func FatalF(fields LogFields, format string, msgs ...interface{}) {
 	log.Fatal().Fields(fields).Msgf(format, msgs...)
 }
 
