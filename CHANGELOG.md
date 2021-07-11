@@ -1,3 +1,10 @@
+## [0.8.3](https://github.com/gopaytech/go-commons/compare/v0.8.2...v0.8.3) (2021-07-11)
+
+
+### Bug Fixes
+
+* add Type alias for LogFields ([3e60c61](https://github.com/gopaytech/go-commons/commit/3e60c616d30a975bf4c08c5b576f74020bfdaf96))
+
 ## [0.8.2](https://github.com/gopaytech/go-commons/compare/v0.8.1...v0.8.2) (2021-07-08)
 
 
