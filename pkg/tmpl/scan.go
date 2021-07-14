@@ -14,6 +14,8 @@ import (
 
 type FileFilter func(path string, info os.FileInfo) bool
 
+type TemplateScanFunc func(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error)
+
 func TemplateScan(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error) {
 
 	fileStat, err := os.Stat(scanPath)
