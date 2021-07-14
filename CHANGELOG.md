@@ -1,3 +1,10 @@
+## [0.8.4](https://github.com/gopaytech/go-commons/compare/v0.8.3...v0.8.4) (2021-07-14)
+
+
+### Bug Fixes
+
+* refactor templ structure ([a1fd639](https://github.com/gopaytech/go-commons/commit/a1fd639a008ea2d5339a127d0397ff5986277f01))
+
 ## [0.8.3](https://github.com/gopaytech/go-commons/compare/v0.8.2...v0.8.3) (2021-07-11)
 
 
