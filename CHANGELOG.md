@@ -1,3 +1,10 @@
+# [0.10.0](https://github.com/gopaytech/go-commons/compare/v0.9.0...v0.10.0) (2021-07-16)
+
+
+### Features
+
+* complete git pkg features ([5232d78](https://github.com/gopaytech/go-commons/commit/5232d785edc62ab2dd7eec2256c3feae9a62b996))
+
 # [0.9.0](https://github.com/gopaytech/go-commons/compare/v0.8.4...v0.9.0) (2021-07-16)
 
 
