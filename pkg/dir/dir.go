@@ -2,11 +2,37 @@ package dir
 
 import (
 	"fmt"
+	"io"
 	"os"
 	"os/user"
 	"path/filepath"
 	"strings"
 )
+
+func IsEmpty(name string) bool {
+	d, err := os.Stat(name)
+	if err != nil {
+		return false
+	}
+
+	if !d.IsDir() {
+		return false
+	}
+
+	f, err := os.Open(name)
+	if err != nil {
+		return false
+	}
+
+	defer f.Close()
+
+	_, err = f.Readdirnames(1)
+	if err == io.EOF {
+		return true
+	}
+
+	return false
+}
 
 func Exists(dirPath string) bool {
 	info, err := os.Stat(dirPath)
