@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/gopaytech/go-commons/compare/v0.8.4...v0.9.0) (2021-07-16)
+
+
+### Features
+
+* add clone function for git ([399ece3](https://github.com/gopaytech/go-commons/commit/399ece3d89b52cccf1b076960cae386b8b90bd6b))
+
 ## [0.8.4](https://github.com/gopaytech/go-commons/compare/v0.8.3...v0.8.4) (2021-07-14)
 
 
