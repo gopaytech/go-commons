@@ -1,3 +1,10 @@
+## [0.10.1](https://github.com/gopaytech/go-commons/compare/v0.10.0...v0.10.1) (2021-07-21)
+
+
+### Bug Fixes
+
+* add mock and fix test for git clone ([9d4937d](https://github.com/gopaytech/go-commons/commit/9d4937da1de6e7cf062e008698bc4d0273c2af75))
+
 # [0.10.0](https://github.com/gopaytech/go-commons/compare/v0.9.0...v0.10.0) (2021-07-16)
 
 
