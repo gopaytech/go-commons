@@ -1,8 +1,8 @@
+// +build local,integration
+
 package git
 
 import (
-	"github.com/gopaytech/go-commons/pkg/dir"
-	"github.com/gopaytech/go-commons/pkg/file"
 	"github.com/gopaytech/go-commons/pkg/strings"
 	"github.com/stretchr/testify/assert"
 	"io/ioutil"
@@ -11,23 +11,7 @@ import (
 	"testing"
 )
 
-type CloneTestCtx struct {
-}
-
-func (c *CloneTestCtx) setup(t *testing.T) {
-	dummyKey := "./clone_test_key"
-	defaultKeyLocation := dir.Home(".ssh", "id_rsa")
-
-	if !file.FileExists(defaultKeyLocation) {
-		t.Logf("default ssh key [%s] not exists, populate it with dummy data", defaultKeyLocation)
-		err := file.Copy(dummyKey, defaultKeyLocation)
-		assert.Nil(t, err)
-	}
-}
-
 func TestCloneOrOpenPublic(t *testing.T) {
-	ctx := &CloneTestCtx{}
-	ctx.setup(t)
 	t.Run("clone public repository should success", func(t *testing.T) {
 		repositoryUrl := "https://github.com/gopaytech/go-commons"
 
@@ -90,8 +74,6 @@ func TestCloneOrOpenPublic(t *testing.T) {
 }
 
 func TestClonePublic(t *testing.T) {
-	ctx := &CloneTestCtx{}
-	ctx.setup(t)
 	t.Run("clone public repository should success", func(t *testing.T) {
 		repositoryUrl := "https://github.com/gopaytech/go-commons"
 
