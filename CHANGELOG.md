@@ -1,3 +1,10 @@
+## [0.12.1](https://github.com/gopaytech/go-commons/compare/v0.12.0...v0.12.1) (2021-07-27)
+
+
+### Bug Fixes
+
+* ignore feature for tmpl, with improvement ([10ab565](https://github.com/gopaytech/go-commons/commit/10ab56545bfab212be84d7b5bc2b24ecbf816369))
+
 # [0.12.0](https://github.com/gopaytech/go-commons/compare/v0.11.3...v0.12.0) (2021-07-27)
 
 
