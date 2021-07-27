@@ -24,24 +24,24 @@ type ScanResult interface {
 	ExecuteToPath(data interface{}, targetPath string) (err error)
 	Execute(data interface{}) (mapResult map[string]string, err error)
 	RootPath() string
-	Extension() string
 	Template() *template.Template
 	TemplateMap() FileMap
+	Option() *ScanOption
 }
 
 type scanResult struct {
 	rootPath    string
-	extension   string
 	template    *template.Template
 	templateMap FileMap
+	option      *ScanOption
+}
+
+func (result *scanResult) Option() *ScanOption {
+	return result.option
 }
 
 func (result *scanResult) RootPath() string {
 	return result.rootPath
-}
-
-func (result *scanResult) Extension() string {
-	return result.extension
 }
 
 func (result *scanResult) Template() *template.Template {
@@ -75,7 +75,6 @@ func (result *scanResult) DirList() (list []string) {
 }
 
 func (result *scanResult) ExecuteToPath(data interface{}, targetPath string) (err error) {
-
 	// add / to targetPath if necessary
 	if !strings.HasSuffix(targetPath, string(filepath.Separator)) {
 		targetPath = targetPath + string(filepath.Separator)

@@ -68,29 +68,17 @@ func (_m *ScanResult) ExecuteToPath(data interface{}, targetPath string) error {
 	return r0
 }
 
-// Extension provides a mock function with given fields:
-func (_m *ScanResult) Extension() string {
+// Option provides a mock function with given fields:
+func (_m *ScanResult) Option() *tmpl.ScanOption {
 	ret := _m.Called()
 
-	var r0 string
-	if rf, ok := ret.Get(0).(func() string); ok {
+	var r0 *tmpl.ScanOption
+	if rf, ok := ret.Get(0).(func() *tmpl.ScanOption); ok {
 		r0 = rf()
 	} else {
-		r0 = ret.Get(0).(string)
-	}
-
-	return r0
-}
-
-// FilterName provides a mock function with given fields:
-func (_m *ScanResult) FilterName() string {
-	ret := _m.Called()
-
-	var r0 string
-	if rf, ok := ret.Get(0).(func() string); ok {
-		r0 = rf()
-	} else {
-		r0 = ret.Get(0).(string)
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*tmpl.ScanOption)
+		}
 	}
 
 	return r0

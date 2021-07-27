@@ -31,8 +31,13 @@ func (s *ScanOption) HasCustomDelim() bool {
 	return len(startDelim) > 0 && len(endDelim) > 0
 }
 
-//Evaluate if on if filter return true, file will be skipped
+//Evaluate if on of filter return true, file will be skipped (Evaluate return false)
 func (s *ScanOption) Evaluate(path string, info os.FileInfo) bool {
+	path = strings.TrimSpace(path)
+	if len(path) == 0 {
+		return false
+	}
+
 	for _, filter := range s.Filters {
 		if filter(path, info) {
 			return false
@@ -74,10 +79,11 @@ func TemplateScanOption(scanPath string, option *ScanOption) (ScanResult, error)
 		option.AddFilter(ignoreFilters...)
 	}
 
-	// if extension start with "." remove it
+	// if extension doesnt start with "." add it
 	tmplExt := option.Ext
-	if strings.HasPrefix(tmplExt, ".") {
-		tmplExt = strings.TrimPrefix(tmplExt, ".")
+	if !strings.HasPrefix(tmplExt, ".") {
+		tmplExt = "." + tmplExt
+		option.Ext = tmplExt
 	}
 
 	rootTemplate := template.New(scanPath)
@@ -86,9 +92,9 @@ func TemplateScanOption(scanPath string, option *ScanOption) (ScanResult, error)
 	}
 
 	result := &scanResult{
-		rootPath:  scanPath,
-		extension: tmplExt,
-		template:  rootTemplate,
+		rootPath: scanPath,
+		template: rootTemplate,
+		option:   option,
 	}
 
 	// start directory walk

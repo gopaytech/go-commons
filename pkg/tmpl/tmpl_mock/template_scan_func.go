@@ -12,13 +12,13 @@ type TemplateScanFunc struct {
 	mock.Mock
 }
 
-// Execute provides a mock function with given fields: scanPath, filter, tmplExt
-func (_m *TemplateScanFunc) Execute(scanPath string, filter tmpl.FileFilter, tmplExt string) (tmpl.ScanResult, error) {
-	ret := _m.Called(scanPath, filter, tmplExt)
+// Execute provides a mock function with given fields: scanPath, tmplExt
+func (_m *TemplateScanFunc) Execute(scanPath string, tmplExt string) (tmpl.ScanResult, error) {
+	ret := _m.Called(scanPath, tmplExt)
 
 	var r0 tmpl.ScanResult
-	if rf, ok := ret.Get(0).(func(string, tmpl.FileFilter, string) tmpl.ScanResult); ok {
-		r0 = rf(scanPath, filter, tmplExt)
+	if rf, ok := ret.Get(0).(func(string, string) tmpl.ScanResult); ok {
+		r0 = rf(scanPath, tmplExt)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(tmpl.ScanResult)
@@ -26,8 +26,8 @@ func (_m *TemplateScanFunc) Execute(scanPath string, filter tmpl.FileFilter, tmp
 	}
 
 	var r1 error
-	if rf, ok := ret.Get(1).(func(string, tmpl.FileFilter, string) error); ok {
-		r1 = rf(scanPath, filter, tmplExt)
+	if rf, ok := ret.Get(1).(func(string, string) error); ok {
+		r1 = rf(scanPath, tmplExt)
 	} else {
 		r1 = ret.Error(1)
 	}

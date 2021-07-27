@@ -12,13 +12,13 @@ type TemplateScanDelimFunc struct {
 	mock.Mock
 }
 
-// Execute provides a mock function with given fields: scanPath, filter, tmplExt, startDelims, endDelims
-func (_m *TemplateScanDelimFunc) Execute(scanPath string, filter tmpl.FileFilter, tmplExt string, startDelims string, endDelims string) (tmpl.ScanResult, error) {
-	ret := _m.Called(scanPath, filter, tmplExt, startDelims, endDelims)
+// Execute provides a mock function with given fields: scanPath, tmplExt, startDelims, endDelims
+func (_m *TemplateScanDelimFunc) Execute(scanPath string, tmplExt string, startDelims string, endDelims string) (tmpl.ScanResult, error) {
+	ret := _m.Called(scanPath, tmplExt, startDelims, endDelims)
 
 	var r0 tmpl.ScanResult
-	if rf, ok := ret.Get(0).(func(string, tmpl.FileFilter, string, string, string) tmpl.ScanResult); ok {
-		r0 = rf(scanPath, filter, tmplExt, startDelims, endDelims)
+	if rf, ok := ret.Get(0).(func(string, string, string, string) tmpl.ScanResult); ok {
+		r0 = rf(scanPath, tmplExt, startDelims, endDelims)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(tmpl.ScanResult)
@@ -26,8 +26,8 @@ func (_m *TemplateScanDelimFunc) Execute(scanPath string, filter tmpl.FileFilter
 	}
 
 	var r1 error
-	if rf, ok := ret.Get(1).(func(string, tmpl.FileFilter, string, string, string) error); ok {
-		r1 = rf(scanPath, filter, tmplExt, startDelims, endDelims)
+	if rf, ok := ret.Get(1).(func(string, string, string, string) error); ok {
+		r1 = rf(scanPath, tmplExt, startDelims, endDelims)
 	} else {
 		r1 = ret.Error(1)
 	}
