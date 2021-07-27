@@ -1,3 +1,10 @@
+# [0.11.0](https://github.com/gopaytech/go-commons/compare/v0.10.2...v0.11.0) (2021-07-27)
+
+
+### Features
+
+* add seed functionality, add capabilities to scan template with custom delims ([dae9d01](https://github.com/gopaytech/go-commons/commit/dae9d01b56a79e5c31fd95ee93edd27ebbe2cb0c))
+
 ## [0.10.2](https://github.com/gopaytech/go-commons/compare/v0.10.1...v0.10.2) (2021-07-21)
 
 
