@@ -1,3 +1,10 @@
+# [0.12.0](https://github.com/gopaytech/go-commons/compare/v0.11.3...v0.12.0) (2021-07-27)
+
+
+### Features
+
+* upgrade dependencies ([018c76a](https://github.com/gopaytech/go-commons/commit/018c76a60a0ca2fa8dc0e3de8ac464d0d3b6fa2c))
+
 ## [0.11.3](https://github.com/gopaytech/go-commons/compare/v0.11.2...v0.11.3) (2021-07-27)
 
 
