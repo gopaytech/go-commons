@@ -1,3 +1,10 @@
+## [0.11.3](https://github.com/gopaytech/go-commons/compare/v0.11.2...v0.11.3) (2021-07-27)
+
+
+### Bug Fixes
+
+* change logging behaviour for seed ([813c7e7](https://github.com/gopaytech/go-commons/commit/813c7e761490018c0b9b86e79daee0ffc719ea19))
+
 ## [0.11.2](https://github.com/gopaytech/go-commons/compare/v0.11.1...v0.11.2) (2021-07-27)
 
 
