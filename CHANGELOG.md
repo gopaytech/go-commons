@@ -1,3 +1,10 @@
+## [0.11.2](https://github.com/gopaytech/go-commons/compare/v0.11.1...v0.11.2) (2021-07-27)
+
+
+### Bug Fixes
+
+* remove unecessary sqlText on log ([5332b11](https://github.com/gopaytech/go-commons/commit/5332b11d37de6612f4226db29daa67f17aafa9c2))
+
 ## [0.11.1](https://github.com/gopaytech/go-commons/compare/v0.11.0...v0.11.1) (2021-07-27)
 
 
