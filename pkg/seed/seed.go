@@ -13,14 +13,15 @@ type Seeder func() error
 func ProvideSeeder(db *sql.DB, path string) Seeder {
 	return func() error {
 		zlog.Debug("seed source dir: %s", path)
-		logField := zlog.LogFields{
-			"Path": path,
-		}
 		files, err := dir.ListFiles(path)
 		if err != nil {
 			return err
 		}
 		for _, file := range files {
+			logField := zlog.LogFields{
+				"Path": path,
+			}
+
 			fullPath := filepath.Join(path, file)
 
 			logField["SeedFile"] = fullPath
