@@ -14,10 +14,9 @@ import (
 
 type FileFilter func(path string, info os.FileInfo) bool
 
-type TemplateScanFunc func(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error)
+type TemplateScanDelimFunc func(scanPath string, filter FileFilter, tmplExt string, startDelims string, endDelims string) (ScanResult, error)
 
-func TemplateScan(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error) {
-
+func TemplateScanDelim(scanPath string, filter FileFilter, tmplExt string, startDelims string, endDelims string) (ScanResult, error) {
 	fileStat, err := os.Stat(scanPath)
 	if err != nil {
 		return nil, err
@@ -38,10 +37,15 @@ func TemplateScan(scanPath string, filter FileFilter, tmplExt string) (ScanResul
 		tmplExt = "." + tmplExt
 	}
 
+	rootTemplate := template.New(scanPath)
+	if len(startDelims) > 0 && len(endDelims) > 0 {
+		rootTemplate = rootTemplate.Delims(startDelims, endDelims)
+	}
+
 	result := &scanResult{
 		rootPath:  scanPath,
 		extension: tmplExt,
-		template:  template.New(scanPath),
+		template:  rootTemplate,
 	}
 
 	// store filter applied for scan
@@ -92,6 +96,12 @@ func TemplateScan(scanPath string, filter FileFilter, tmplExt string) (ScanResul
 	result.templateMap = templateMap
 
 	return result, err
+}
+
+type TemplateScanFunc func(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error)
+
+func TemplateScan(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error) {
+	return TemplateScanDelim(scanPath, filter, tmplExt, "", "")
 }
 
 func IgnoreGit() FileFilter {
