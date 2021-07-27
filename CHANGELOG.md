@@ -1,3 +1,10 @@
+## [0.11.1](https://github.com/gopaytech/go-commons/compare/v0.11.0...v0.11.1) (2021-07-27)
+
+
+### Bug Fixes
+
+* change how log behave on seeder function ([ad82315](https://github.com/gopaytech/go-commons/commit/ad82315844bdcc866d9e4739e0191cf9bcf73705))
+
 # [0.11.0](https://github.com/gopaytech/go-commons/compare/v0.10.2...v0.11.0) (2021-07-27)
 
 
