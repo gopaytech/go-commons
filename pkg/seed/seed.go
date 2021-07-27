@@ -8,30 +8,40 @@ import (
 	"path/filepath"
 )
 
-type Seeder func(path string) error
+type Seeder func() error
 
-func ProvideSeeder(db *sql.DB) Seeder {
-	return func(path string) error {
+func ProvideSeeder(db *sql.DB, path string) Seeder {
+	return func() error {
 		zlog.Debug("seed source dir: %s", path)
+		logField := zlog.LogFields{
+			"Path": path,
+		}
 		files, err := dir.ListFiles(path)
 		if err != nil {
 			return err
 		}
 		for _, file := range files {
 			fullPath := filepath.Join(path, file)
-			zlog.Debug("seed file: %s", fullPath)
+
+			logField["SeedFile"] = fullPath
+			zlog.DebugF(logField, "read seed file")
+
 			openedFile, err := ioutil.ReadFile(fullPath)
 			if err != nil {
 				return err
 			}
+
 			sqlText := string(openedFile)
+			logField["SqlText"] = sqlText
+
+			zlog.DebugF(logField, "execute seed file")
 			result, err := db.Exec(sqlText)
 			if err != nil {
-				zlog.Error(err, "execute: %s failed", sqlText)
+				zlog.ErrorF(logField, err, "execution failed")
 				return err
 			}
 			rowAffected, _ := result.RowsAffected()
-			zlog.Debug("execute: %s, row affected %s", sqlText, rowAffected)
+			zlog.DebugF(logField, "execution finished, row affected %d", rowAffected)
 		}
 		return nil
 	}
