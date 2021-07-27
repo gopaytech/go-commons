@@ -1,3 +1,10 @@
+## [0.10.2](https://github.com/gopaytech/go-commons/compare/v0.10.1...v0.10.2) (2021-07-21)
+
+
+### Bug Fixes
+
+* prevent nil error when check file.FileExists ([638da00](https://github.com/gopaytech/go-commons/commit/638da00677c30722638acd4dd1e991ad2eaca9b2))
+
 ## [0.10.1](https://github.com/gopaytech/go-commons/compare/v0.10.0...v0.10.1) (2021-07-21)
 
 
