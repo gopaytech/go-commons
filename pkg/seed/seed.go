@@ -32,9 +32,9 @@ func ProvideSeeder(db *sql.DB, path string) Seeder {
 			}
 
 			sqlText := string(openedFile)
-			logField["SqlText"] = sqlText
-
 			zlog.DebugF(logField, "execute seed file")
+
+			logField["SqlText"] = sqlText
 			result, err := db.Exec(sqlText)
 			if err != nil {
 				zlog.ErrorF(logField, err, "execution failed")
