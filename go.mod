@@ -8,6 +8,7 @@ require (
 	github.com/containerd/containerd v1.4.3 // indirect
 	github.com/docker/docker v20.10.6+incompatible
 	github.com/fatih/color v1.10.0
+	github.com/go-git/go-git/v5 v5.2.0
 	github.com/golang-migrate/migrate/v4 v4.14.1
 	github.com/google/uuid v1.2.0
 	github.com/goreleaser/nfpm v1.10.3
@@ -24,6 +25,7 @@ require (
 	github.com/spf13/afero v1.6.0 // indirect
 	github.com/spf13/viper v1.7.1
 	github.com/stretchr/testify v1.7.0
+	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2
 	golang.org/x/sys v0.0.0-20210503173754-0981d6026fa6 // indirect
 	golang.org/x/text v0.3.6 // indirect
 	gopkg.in/alexcesaro/statsd.v2 v2.0.0

@@ -1,30 +1,64 @@
 package tmpl
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/Masterminds/sprig"
+	"github.com/gopaytech/go-commons/pkg/file"
 	"io/ioutil"
 	"os"
 	"path/filepath"
-	"reflect"
-	"runtime"
 	"strings"
 	"text/template"
 )
 
+type ScanOption struct {
+	StartDelim     string
+	EndDelim       string
+	Ext            string
+	IgnoreFileName string
+	Filters        []FileFilter
+}
+
+func (s *ScanOption) AddFilter(filter ...FileFilter) {
+	s.Filters = append(s.Filters, filter...)
+}
+
+func (s *ScanOption) HasCustomDelim() bool {
+	startDelim := strings.TrimSpace(s.StartDelim)
+	endDelim := strings.TrimSpace(s.EndDelim)
+
+	return len(startDelim) > 0 && len(endDelim) > 0
+}
+
+//Evaluate if on if filter return true, file will be skipped
+func (s *ScanOption) Evaluate(path string, info os.FileInfo) bool {
+	for _, filter := range s.Filters {
+		if filter(path, info) {
+			return false
+		}
+	}
+	return true
+}
+
+func DefaultOption() *ScanOption {
+	return &ScanOption{
+		StartDelim:     "",
+		EndDelim:       "",
+		Ext:            "tmpl",
+		IgnoreFileName: ".tmplignore",
+		Filters:        []FileFilter{IgnoreGit()},
+	}
+}
+
+// FileFilter if filter return true, file will be ignored
 type FileFilter func(path string, info os.FileInfo) bool
 
-type TemplateScanDelimFunc func(scanPath string, filter FileFilter, tmplExt string, startDelims string, endDelims string) (ScanResult, error)
+type TemplateScanOptionFunc func(scanPath string, option ScanOption) (ScanResult, error)
 
-func TemplateScanDelim(scanPath string, filter FileFilter, tmplExt string, startDelims string, endDelims string) (ScanResult, error) {
-	fileStat, err := os.Stat(scanPath)
-	if err != nil {
-		return nil, err
-	}
-
-	if !fileStat.IsDir() {
-		err = fmt.Errorf("%s is not a directory", scanPath)
-		return nil, err
+func TemplateScanOption(scanPath string, option *ScanOption) (ScanResult, error) {
+	if !file.DirExists(scanPath) {
+		return nil, fmt.Errorf("directory %s is not exists", scanPath)
 	}
 
 	// add / to scanPath if necessary
@@ -32,14 +66,23 @@ func TemplateScanDelim(scanPath string, filter FileFilter, tmplExt string, start
 		scanPath = scanPath + string(filepath.Separator)
 	}
 
-	// if extension doesn't start with "." add it
-	if !strings.HasSuffix(tmplExt, ".") {
-		tmplExt = "." + tmplExt
+	// load ignore file
+	ignoreFile := filepath.Join(scanPath, option.IgnoreFileName)
+	if file.FileExists(ignoreFile) {
+		stringByte, _ := ioutil.ReadFile(ignoreFile)
+		ignoreFilters := Ignore(string(stringByte))
+		option.AddFilter(ignoreFilters...)
+	}
+
+	// if extension start with "." remove it
+	tmplExt := option.Ext
+	if strings.HasPrefix(tmplExt, ".") {
+		tmplExt = strings.TrimPrefix(tmplExt, ".")
 	}
 
 	rootTemplate := template.New(scanPath)
-	if len(startDelims) > 0 && len(endDelims) > 0 {
-		rootTemplate = rootTemplate.Delims(startDelims, endDelims)
+	if option.HasCustomDelim() {
+		rootTemplate = rootTemplate.Delims(option.StartDelim, option.EndDelim)
 	}
 
 	result := &scanResult{
@@ -48,20 +91,16 @@ func TemplateScanDelim(scanPath string, filter FileFilter, tmplExt string, start
 		template:  rootTemplate,
 	}
 
-	// store filter applied for scan
-	result.filterName = runtime.FuncForPC(reflect.ValueOf(filter).Pointer()).Name()
-
 	// start directory walk
 	templateMap := FileMap{}
-
-	err = filepath.Walk(scanPath, func(path string, info os.FileInfo, err error) error {
+	err := filepath.Walk(scanPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 
 		relativePath := strings.TrimPrefix(path, scanPath)
 		// enable filter, ignore files excluded by filter
-		if filter(relativePath, info) {
+		if option.Evaluate(relativePath, info) {
 			templateFile := FileDetail{
 				Info: info,
 			}
@@ -98,22 +137,52 @@ func TemplateScanDelim(scanPath string, filter FileFilter, tmplExt string, start
 	return result, err
 }
 
-type TemplateScanFunc func(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error)
+type TemplateScanDelimFunc func(scanPath string, tmplExt string, startDelims string, endDelims string) (ScanResult, error)
 
-func TemplateScan(scanPath string, filter FileFilter, tmplExt string) (ScanResult, error) {
-	return TemplateScanDelim(scanPath, filter, tmplExt, "", "")
+func TemplateScanDelim(scanPath string, tmplExt string, startDelims string, endDelims string) (ScanResult, error) {
+	option := DefaultOption()
+	option.Ext = tmplExt
+	option.StartDelim = startDelims
+	option.EndDelim = endDelims
+
+	return TemplateScanOption(scanPath, option)
+}
+
+type TemplateScanFunc func(scanPath string, tmplExt string) (ScanResult, error)
+
+func TemplateScan(scanPath string, tmplExt string) (ScanResult, error) {
+	option := DefaultOption()
+	option.Ext = tmplExt
+
+	return TemplateScanOption(scanPath, option)
 }
 
 func IgnoreGit() FileFilter {
 	return func(path string, info os.FileInfo) bool {
 		if info.IsDir() && strings.HasPrefix(info.Name(), ".git") {
-			return false
+			return true
 		}
 
 		if strings.Contains(path, ".git/") {
-			return false
+			return true
 		}
 
-		return true
+		return false
 	}
+}
+
+func Ignore(ignoreFileContent string) []FileFilter {
+	reader := strings.NewReader(ignoreFileContent)
+	scanner := bufio.NewScanner(reader)
+	scanner.Split(bufio.ScanLines)
+	var filters []FileFilter
+	for scanner.Scan() {
+		pattern := scanner.Text()
+		fun := func(path string, _ os.FileInfo) bool {
+			return Match(pattern, path)
+		}
+
+		filters = append(filters, fun)
+	}
+	return filters
 }

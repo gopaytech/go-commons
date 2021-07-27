@@ -25,7 +25,6 @@ type ScanResult interface {
 	Execute(data interface{}) (mapResult map[string]string, err error)
 	RootPath() string
 	Extension() string
-	FilterName() string
 	Template() *template.Template
 	TemplateMap() FileMap
 }
@@ -33,7 +32,6 @@ type ScanResult interface {
 type scanResult struct {
 	rootPath    string
 	extension   string
-	filterName  string
 	template    *template.Template
 	templateMap FileMap
 }
@@ -44,10 +42,6 @@ func (result *scanResult) RootPath() string {
 
 func (result *scanResult) Extension() string {
 	return result.extension
-}
-
-func (result *scanResult) FilterName() string {
-	return result.filterName
 }
 
 func (result *scanResult) Template() *template.Template {
