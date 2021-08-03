@@ -1,6 +1,7 @@
 package tmpl
 
 import (
+	"bufio"
 	"bytes"
 	"io/ioutil"
 	"os"
@@ -16,6 +17,17 @@ type FileDetail struct {
 	IsTemplate bool
 }
 
+const InvalidMark = "<no value>"
+
+type Validation struct {
+	Valid        bool
+	TemplateName string
+	InvalidLines []string
+	Error        error
+}
+
+type ValidationMap map[string]Validation
+
 type FileMap map[string]FileDetail
 
 type ScanResult interface {
@@ -23,6 +35,7 @@ type ScanResult interface {
 	DirList() (list []string)
 	ExecuteToPath(data interface{}, targetPath string) (err error)
 	Execute(data interface{}) (mapResult map[string]string, err error)
+	Validate(data interface{}) (resultMap ValidationMap)
 	RootPath() string
 	Template() *template.Template
 	TemplateMap() FileMap
@@ -134,6 +147,41 @@ func (result *scanResult) ExecuteToPath(data interface{}, targetPath string) (er
 			}
 		}
 	}
+	return
+}
+
+func (result *scanResult) Validate(data interface{}) (resultMap ValidationMap) {
+	resultMap = ValidationMap{}
+	for key, value := range result.templateMap {
+		if value.IsTemplate {
+			validation := Validation{
+				TemplateName: key,
+				Valid:        true,
+			}
+
+			var buff bytes.Buffer
+			ierr := result.template.ExecuteTemplate(&buff, key, data)
+			if ierr != nil {
+				validation.Valid = false
+				validation.Error = ierr
+			} else {
+				reader := strings.NewReader(buff.String())
+				scanner := bufio.NewScanner(reader)
+				scanner.Split(bufio.ScanLines)
+				for scanner.Scan() {
+					line := scanner.Text()
+					if strings.Contains(line, InvalidMark) {
+						validation.Valid = false
+						validation.InvalidLines = append(validation.InvalidLines, line)
+					}
+				}
+
+			}
+
+			resultMap[value.TargetPath] = validation
+		}
+	}
+
 	return
 }
 

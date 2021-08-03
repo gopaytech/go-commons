@@ -66,6 +66,18 @@ func TestTemplateScan(t *testing.T) {
 		}
 	})
 
+	t.Run("validate result", func(t *testing.T) {
+		data := map[string]interface{}{}
+		validateResult := result.Validate(data)
+
+		for key, value := range validateResult {
+			assert.NoError(t, value.Error)
+			assert.NotEmpty(t, value.InvalidLines)
+			t.Logf("Validate %s, %+v", key, value)
+		}
+
+	})
+
 	t.Run("execute result to path", func(t *testing.T) {
 		templateTarget, err := os.MkdirTemp("", "scan-test-target-*")
 		assert.NoError(t, err)
