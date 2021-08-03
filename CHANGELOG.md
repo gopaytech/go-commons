@@ -1,3 +1,10 @@
+## [0.12.2](https://github.com/gopaytech/go-commons/compare/v0.12.1...v0.12.2) (2021-08-03)
+
+
+### Bug Fixes
+
+* add feature to Validate Template Result ([f6b97f4](https://github.com/gopaytech/go-commons/commit/f6b97f4c55041592f6f03984e2010770bf540dbe))
+
 ## [0.12.1](https://github.com/gopaytech/go-commons/compare/v0.12.0...v0.12.1) (2021-07-27)
 
 
