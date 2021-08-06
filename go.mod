@@ -17,6 +17,7 @@ require (
 	github.com/sony/sonyflake v1.0.0
 	github.com/spf13/viper v1.8.1
 	github.com/stretchr/testify v1.7.0
+	github.com/xanzy/go-gitlab v0.50.2
 	golang.org/x/crypto v0.0.0-20210711020723-a769d52b0f97
 	gopkg.in/alexcesaro/statsd.v2 v2.0.0
 	gorm.io/driver/mysql v1.1.1
