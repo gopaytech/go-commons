@@ -1,3 +1,10 @@
+# [0.13.0](https://github.com/gopaytech/go-commons/compare/v0.12.2...v0.13.0) (2021-08-06)
+
+
+### Features
+
+* add gitlab feature ([4a2fb25](https://github.com/gopaytech/go-commons/commit/4a2fb25567ea821ec9df2254fe0246220477c5c4))
+
 ## [0.12.2](https://github.com/gopaytech/go-commons/compare/v0.12.1...v0.12.2) (2021-08-03)
 
 
