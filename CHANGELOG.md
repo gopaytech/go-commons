@@ -1,3 +1,10 @@
+## [0.13.1](https://github.com/gopaytech/go-commons/compare/v0.13.0...v0.13.1) (2021-08-06)
+
+
+### Bug Fixes
+
+* add check function for PipelineStatus ([d3f5d9e](https://github.com/gopaytech/go-commons/commit/d3f5d9e26d10b882bc28c5ea3bf3c2209891f6e7))
+
 # [0.13.0](https://github.com/gopaytech/go-commons/compare/v0.12.2...v0.13.0) (2021-08-06)
 
 
