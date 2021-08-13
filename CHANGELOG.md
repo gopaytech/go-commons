@@ -1,3 +1,10 @@
+## [0.13.4](https://github.com/gopaytech/go-commons/compare/v0.13.3...v0.13.4) (2021-08-13)
+
+
+### Bug Fixes
+
+* add Down function for migration ([f871cda](https://github.com/gopaytech/go-commons/commit/f871cda1a20e04a136f733e5b661faabbc8b8892))
+
 ## [0.13.3](https://github.com/gopaytech/go-commons/compare/v0.13.2...v0.13.3) (2021-08-13)
 
 
