@@ -1,3 +1,10 @@
+## [0.13.6](https://github.com/gopaytech/go-commons/compare/v0.13.5...v0.13.6) (2021-08-13)
+
+
+### Bug Fixes
+
+* add capability to create migration instance with MigrationTable config ([87aafc4](https://github.com/gopaytech/go-commons/commit/87aafc4b71df42b56d81967192bcc9e4716a7be2))
+
 ## [0.13.5](https://github.com/gopaytech/go-commons/compare/v0.13.4...v0.13.5) (2021-08-13)
 
 
