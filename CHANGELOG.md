@@ -1,3 +1,10 @@
+## [0.13.2](https://github.com/gopaytech/go-commons/compare/v0.13.1...v0.13.2) (2021-08-13)
+
+
+### Bug Fixes
+
+* add NewNameWithBaseUrl for gitlab ([9d07974](https://github.com/gopaytech/go-commons/commit/9d079748f6e94c027f126fcb1003183d6b2846df))
+
 ## [0.13.1](https://github.com/gopaytech/go-commons/compare/v0.13.0...v0.13.1) (2021-08-06)
 
 
