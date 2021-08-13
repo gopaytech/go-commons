@@ -2,8 +2,9 @@ package stdout
 
 import (
 	"fmt"
-	"github.com/fatih/color"
 	"sync"
+
+	"github.com/fatih/color"
 )
 
 type ColorPrinterInterface interface {

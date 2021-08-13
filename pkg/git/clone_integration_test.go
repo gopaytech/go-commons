@@ -3,12 +3,13 @@
 package git
 
 import (
-	"github.com/gopaytech/go-commons/pkg/strings"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
-	"k8s.io/client-go/util/homedir"
 	"os"
 	"testing"
+
+	"github.com/gopaytech/go-commons/pkg/strings"
+	"github.com/stretchr/testify/assert"
+	"k8s.io/client-go/util/homedir"
 )
 
 func TestCloneOrOpenPublic(t *testing.T) {

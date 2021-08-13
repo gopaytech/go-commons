@@ -2,10 +2,11 @@ package seed
 
 import (
 	"database/sql"
-	"github.com/gopaytech/go-commons/pkg/dir"
-	"github.com/gopaytech/go-commons/pkg/zlog"
 	"io/ioutil"
 	"path/filepath"
+
+	"github.com/gopaytech/go-commons/pkg/dir"
+	"github.com/gopaytech/go-commons/pkg/zlog"
 )
 
 type Seeder func() error

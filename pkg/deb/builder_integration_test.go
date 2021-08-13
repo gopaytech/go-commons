@@ -4,11 +4,12 @@ package deb
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/gopaytech/go-commons/pkg/file"
 	"github.com/gopaytech/go-commons/pkg/strings"
 	"github.com/goreleaser/nfpm/deb"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 type builderIntegrationContext struct {

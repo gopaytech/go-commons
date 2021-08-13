@@ -2,10 +2,11 @@ package strings
 
 import (
 	"fmt"
-	fake "github.com/brianvoe/gofakeit"
-	"github.com/stretchr/testify/assert"
 	"io/ioutil"
 	"testing"
+
+	fake "github.com/brianvoe/gofakeit"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSaveToFileSuccess(t *testing.T) {

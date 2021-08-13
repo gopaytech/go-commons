@@ -2,6 +2,7 @@ package docker
 
 import (
 	"encoding/json"
+
 	"github.com/gopaytech/go-commons/pkg/encoding"
 )
 

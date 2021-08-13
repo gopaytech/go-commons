@@ -1,8 +1,9 @@
 package logger
 
 import (
-	"github.com/sirupsen/logrus"
 	"io"
+
+	"github.com/sirupsen/logrus"
 )
 
 func NewLogger(writer io.Writer, level logrus.Level, formatter logrus.Formatter) *logrus.Logger {

@@ -2,10 +2,11 @@ package zlog
 
 import (
 	"context"
-	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
 	"os"
 	"time"
+
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
 )
 
 type LogFields map[string]interface{}

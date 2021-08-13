@@ -2,13 +2,14 @@ package exec
 
 import (
 	"bufio"
-	"github.com/fatih/color"
-	"github.com/gopaytech/go-commons/pkg/stdout"
-	"github.com/gopaytech/go-commons/pkg/strings"
 	"io"
 	"os"
 	"os/exec"
 	"time"
+
+	"github.com/fatih/color"
+	"github.com/gopaytech/go-commons/pkg/stdout"
+	"github.com/gopaytech/go-commons/pkg/strings"
 )
 
 type CommandInterface interface {

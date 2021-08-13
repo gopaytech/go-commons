@@ -3,13 +3,14 @@ package tmpl
 import (
 	"bufio"
 	"fmt"
-	"github.com/Masterminds/sprig"
-	"github.com/gopaytech/go-commons/pkg/file"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 	"text/template"
+
+	"github.com/Masterminds/sprig"
+	"github.com/gopaytech/go-commons/pkg/file"
 )
 
 type ScanOption struct {

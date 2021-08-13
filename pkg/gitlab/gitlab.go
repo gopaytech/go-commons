@@ -1,8 +1,9 @@
 package gitlab
 
 import (
-	gl "github.com/xanzy/go-gitlab"
 	"strings"
+
+	gl "github.com/xanzy/go-gitlab"
 )
 
 func NewClient(url string, token string) (*gl.Client, error) {

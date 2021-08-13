@@ -3,9 +3,10 @@ package k8s
 import (
 	"context"
 	"fmt"
-	"github.com/google/uuid"
 	"io"
 	"time"
+
+	"github.com/google/uuid"
 
 	batch "k8s.io/api/batch/v1"
 	"k8s.io/api/core/v1"

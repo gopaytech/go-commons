@@ -2,6 +2,7 @@ package deb
 
 import (
 	"fmt"
+
 	"github.com/goreleaser/nfpm"
 )
 

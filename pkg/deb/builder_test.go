@@ -3,10 +3,11 @@ package deb
 import (
 	"bytes"
 	"errors"
+	"testing"
+
 	"github.com/gopaytech/go-commons/pkg/file"
 	"github.com/goreleaser/nfpm"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 type builderTestContext struct {

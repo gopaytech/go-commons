@@ -2,6 +2,7 @@ package gitlab_file
 
 import (
 	"encoding/base64"
+
 	"github.com/gopaytech/go-commons/pkg/gitlab"
 	gl "github.com/xanzy/go-gitlab"
 )

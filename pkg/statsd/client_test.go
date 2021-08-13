@@ -1,8 +1,9 @@
 package statsd_test
 
 import (
-	"github.com/gopaytech/go-commons/pkg/statsd"
 	"testing"
+
+	"github.com/gopaytech/go-commons/pkg/statsd"
 
 	"github.com/stretchr/testify/assert"
 )

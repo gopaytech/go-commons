@@ -1,8 +1,9 @@
 package gitlab
 
 import (
-	gl "github.com/xanzy/go-gitlab"
 	"sync"
+
+	gl "github.com/xanzy/go-gitlab"
 )
 
 type Group interface {

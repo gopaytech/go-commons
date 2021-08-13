@@ -4,11 +4,12 @@ import (
 	"archive/tar"
 	"compress/gzip"
 	"fmt"
-	"github.com/gopaytech/go-commons/pkg/dir"
 	"io"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/gopaytech/go-commons/pkg/dir"
 )
 
 func Tar(sourceDirectory string, writer io.Writer) (err error) {

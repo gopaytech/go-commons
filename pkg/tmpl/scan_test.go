@@ -1,12 +1,13 @@
 package tmpl
 
 import (
-	"github.com/gopaytech/go-commons/pkg/file"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"github.com/gopaytech/go-commons/pkg/file"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestTemplateScan(t *testing.T) {

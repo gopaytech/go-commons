@@ -5,7 +5,6 @@ import (
 	gl "github.com/xanzy/go-gitlab"
 )
 
-
 type PipelineStatus string
 
 const (

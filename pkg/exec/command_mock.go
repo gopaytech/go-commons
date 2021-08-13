@@ -1,8 +1,9 @@
 package exec
 
 import (
-	"github.com/stretchr/testify/mock"
 	"io"
+
+	"github.com/stretchr/testify/mock"
 )
 
 type CommandMock struct {

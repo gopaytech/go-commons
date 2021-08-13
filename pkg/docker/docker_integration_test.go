@@ -3,10 +3,11 @@
 package docker
 
 import (
-	"github.com/docker/docker/client"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+
+	"github.com/docker/docker/client"
+	"github.com/stretchr/testify/assert"
 )
 
 type dockerIntegrationCtx struct {

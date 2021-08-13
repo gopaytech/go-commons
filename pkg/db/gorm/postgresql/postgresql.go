@@ -2,6 +2,7 @@ package postgresql
 
 import (
 	"fmt"
+
 	"github.com/gopaytech/go-commons/pkg/db"
 	gorm2 "github.com/gopaytech/go-commons/pkg/zlog/gorm"
 	"gorm.io/driver/postgres"

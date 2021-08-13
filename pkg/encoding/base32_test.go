@@ -1,8 +1,9 @@
 package encoding
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestBase32Encode(t *testing.T) {

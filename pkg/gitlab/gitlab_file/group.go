@@ -1,9 +1,10 @@
 package gitlab_file
 
 import (
+	"sync"
+
 	"github.com/gopaytech/go-commons/pkg/gitlab"
 	gl "github.com/xanzy/go-gitlab"
-	"sync"
 )
 
 type ProjectFiles struct {

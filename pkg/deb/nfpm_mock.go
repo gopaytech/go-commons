@@ -1,9 +1,10 @@
 package deb
 
 import (
+	"io"
+
 	"github.com/goreleaser/nfpm"
 	"github.com/stretchr/testify/mock"
-	"io"
 )
 
 type NFPMPackagerMock struct {

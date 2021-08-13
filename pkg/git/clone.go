@@ -3,6 +3,10 @@ package git
 import (
 	"errors"
 	"fmt"
+	"io/ioutil"
+	"os"
+	"strings"
+
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/transport"
@@ -11,9 +15,6 @@ import (
 	"github.com/gopaytech/go-commons/pkg/dir"
 	"github.com/gopaytech/go-commons/pkg/file"
 	cryptoSsh "golang.org/x/crypto/ssh"
-	"io/ioutil"
-	"os"
-	"strings"
 )
 
 // DefaultSshAuth this func will fetch default private key ~/.ssh/id_rsa

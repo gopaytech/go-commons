@@ -4,9 +4,10 @@ package docker
 
 import (
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type clientIntegrationTestContext struct {

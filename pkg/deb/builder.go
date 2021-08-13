@@ -3,6 +3,7 @@ package deb
 import (
 	"bytes"
 	"fmt"
+
 	"github.com/gopaytech/go-commons/pkg/file"
 	"github.com/goreleaser/nfpm"
 	"github.com/goreleaser/nfpm/deb"

@@ -2,6 +2,7 @@ package mysql
 
 import (
 	"fmt"
+
 	"github.com/gopaytech/go-commons/pkg/db"
 	gorm2 "github.com/gopaytech/go-commons/pkg/zlog/gorm"
 	mysqlDriver "gorm.io/driver/mysql"

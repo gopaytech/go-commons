@@ -4,16 +4,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/client"
-	"github.com/gopaytech/go-commons/pkg/config"
-	"github.com/gopaytech/go-commons/pkg/encoding"
-	"github.com/gopaytech/go-commons/pkg/strings"
 	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/client"
+	"github.com/gopaytech/go-commons/pkg/config"
+	"github.com/gopaytech/go-commons/pkg/encoding"
+	"github.com/gopaytech/go-commons/pkg/strings"
 )
 
 // path will used by default unless data is present

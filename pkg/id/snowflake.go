@@ -2,9 +2,10 @@ package id
 
 import (
 	"fmt"
-	"github.com/sony/sonyflake"
 	"math/rand"
 	"time"
+
+	"github.com/sony/sonyflake"
 )
 
 var snowflake *sonyflake.Sonyflake
