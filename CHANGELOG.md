@@ -1,3 +1,10 @@
+## [0.13.5](https://github.com/gopaytech/go-commons/compare/v0.13.4...v0.13.5) (2021-08-13)
+
+
+### Bug Fixes
+
+* add capabilites to change migration config ([1220f6c](https://github.com/gopaytech/go-commons/commit/1220f6cc82f7a14a7ea6f0d9e981d536bad48c2b))
+
 ## [0.13.4](https://github.com/gopaytech/go-commons/compare/v0.13.3...v0.13.4) (2021-08-13)
 
 
