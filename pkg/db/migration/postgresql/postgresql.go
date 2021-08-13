@@ -29,7 +29,7 @@ func WithInstance(db *sql.DB, path string) (mgrn migration.Migration, err error)
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	m, _ := migrate.NewWithDatabaseInstance(
 		path,
-		"mysql",
+		"postgresql",
 		driver,
 	)
 

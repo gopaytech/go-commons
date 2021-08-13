@@ -8,7 +8,9 @@ import (
 type Migration interface {
 	Up() error
 	DownLast() error
+	Down() error
 	Close() error
+	Instance() *migrate.Migrate
 }
 
 type Migrator struct {
@@ -26,6 +28,15 @@ func (m *Migrator) Up() (err error) {
 
 func (m *Migrator) DownLast() (err error) {
 	err = m.Migrate.Steps(-1)
+	return
+}
+
+func (m *Migrator) Instance() *migrate.Migrate {
+	return m.Migrate
+}
+
+func (m *Migrator) Down() (err error) {
+	err = m.Migrate.Down()
 	return
 }
 
