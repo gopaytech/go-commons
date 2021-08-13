@@ -27,7 +27,11 @@ func New(config db.Config, path string) (mgrn migration.Migration, err error) {
 }
 
 func WithInstance(db *sql.DB, path string) (mgrn migration.Migration, err error) {
-	driver, err := mysql.WithInstance(db, &mysql.Config{})
+	return WithInstanceConfig(db, path, &mysql.Config{})
+}
+
+func WithInstanceConfig(db *sql.DB, path string, config *mysql.Config) (mgrn migration.Migration, err error) {
+	driver, err := mysql.WithInstance(db, config)
 	m, _ := migrate.NewWithDatabaseInstance(
 		path,
 		"mysql",
