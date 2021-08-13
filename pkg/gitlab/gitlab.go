@@ -28,6 +28,14 @@ func NewNameWithClient(name string, client *gl.Client) NameOrId {
 	return NameOrId{Name: name}
 }
 
+func NewNameWithBaseUrl(name string, baseUrl string) NameOrId {
+	name = strings.TrimPrefix(name, baseUrl)
+	name = strings.TrimPrefix(name, "/")
+	name = strings.TrimSuffix(name, "/")
+
+	return NameOrId{Name: name}
+}
+
 func NewId(id int) NameOrId {
 	return NameOrId{id: id}
 }
