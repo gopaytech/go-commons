@@ -29,6 +29,12 @@ func WithInstance(db *sql.DB, path string) (mgrn migration.Migration, err error)
 	return WithInstanceConfig(db, path, &postgres.Config{})
 }
 
+func WithInstanceMigrationTable(db *sql.DB, path string, migrationTable string) (mgrn migration.Migration, err error) {
+	return WithInstanceConfig(db, path, &postgres.Config{
+		MigrationsTable: migrationTable,
+	})
+}
+
 func WithInstanceConfig(db *sql.DB, path string, config *postgres.Config) (mgrn migration.Migration, err error) {
 	driver, err := postgres.WithInstance(db, config)
 	m, _ := migrate.NewWithDatabaseInstance(
