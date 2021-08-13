@@ -1,3 +1,10 @@
+## [0.13.3](https://github.com/gopaytech/go-commons/compare/v0.13.2...v0.13.3) (2021-08-13)
+
+
+### Bug Fixes
+
+* remove wrong implementation of NewNameWithClient ([8e7e8b1](https://github.com/gopaytech/go-commons/commit/8e7e8b136f28c762f13ec7ac0d1b676ce28ccbbd))
+
 ## [0.13.2](https://github.com/gopaytech/go-commons/compare/v0.13.1...v0.13.2) (2021-08-13)
 
 
