@@ -1,3 +1,10 @@
+## [0.13.8](https://github.com/gopaytech/go-commons/compare/v0.13.7...v0.13.8) (2021-10-01)
+
+
+### Bug Fixes
+
+* update library ([199a965](https://github.com/gopaytech/go-commons/commit/199a965be040ac7ee9da268770c74323549cf958))
+
 ## [0.13.7](https://github.com/gopaytech/go-commons/compare/v0.13.6...v0.13.7) (2021-10-01)
 
 
