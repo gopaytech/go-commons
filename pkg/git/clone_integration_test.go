@@ -1,3 +1,4 @@
+//go:build local && integration
 // +build local,integration
 
 package git
