@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/Masterminds/sprig v2.22.0+incompatible
 	github.com/brianvoe/gofakeit v3.18.0+incompatible
+	github.com/containerd/containerd v1.5.6 // indirect
 	github.com/docker/docker v20.10.8+incompatible
 	github.com/fatih/color v1.13.0
 	github.com/go-git/go-git/v5 v5.4.2
