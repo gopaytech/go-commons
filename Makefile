@@ -39,7 +39,7 @@ vendor:
 # Main Test Targets (without docker)
 .PHONY: test
 test:
-	go test -v -race -coverprofile=$(OUT_DIR)/coverage.out ./...
+	go test -race -coverprofile=$(OUT_DIR)/coverage.out ./...
 
 # Integration test executed by github workflow
 .PHONY: integration-test

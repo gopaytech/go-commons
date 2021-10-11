@@ -1,4 +1,4 @@
-package exec
+package cmd
 
 import (
 	"testing"
@@ -8,19 +8,19 @@ import (
 )
 
 func TestExecuteAndWaitSuccess(t *testing.T) {
-	output, err := Command.ExecuteAndWait("ls", "-alh", "/")
+	output, err := Command.ExecAndWait("ls", "-alh", "/")
 	assert.Nil(t, err)
 	assert.NotNil(t, output)
 }
 
 func TestExecuteAndWaitFailed(t *testing.T) {
-	output, err := Command.ExecuteAndWait("lsx", "help")
+	output, err := Command.ExecAndWait("lsx", "help")
 	assert.NotNil(t, err)
 	assert.Empty(t, output)
 }
 
 func TestExecute(t *testing.T) {
-	stdOut, stdErr, err := Command.Execute("/usr/bin/bash", "cmd_loop_test.sh")
+	stdOut, stdErr, err := Command.Exec("/usr/bin/bash", "cmd_loop_test.sh")
 	assert.Nil(t, err)
 	assert.NotNil(t, stdOut)
 	assert.NotNil(t, stdErr)
@@ -30,7 +30,7 @@ func TestExecute(t *testing.T) {
 }
 
 func TestExecuteSuccess(t *testing.T) {
-	stdOut, stdErr, err := Command.Execute("/usr/bin/bash", "cmd_loop_test.sh")
+	stdOut, stdErr, err := Command.Exec("/usr/bin/bash", "cmd_loop_test.sh")
 	assert.Nil(t, err)
 	assert.NotNil(t, stdOut)
 	assert.NotNil(t, stdErr)

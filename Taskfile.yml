@@ -1,0 +1,42 @@
+version: '3'
+
+vars:
+  PACKAGE: github.com/gopaytech/go-commons
+  COVERAGE_DIR: ./coverage
+  VERSION:
+    sh: cat VERSION
+  CURRENT_DIR:
+    sh: pwd
+
+tasks:
+  mkdir:
+    cmds:
+      - mkdir -p {{.COVERAGE_DIR}}
+    status:
+      - test -p {{.COVERAGE_DIR}}
+    silent: true
+
+  vendor:
+    cmds:
+      - echo {{.CURRENT_DIR}}
+      - go mod vendor
+    silent: true
+
+  test:
+    deps: [ mkdir,vendor ]
+    cmds:
+      - go test -v -race -coverprofile={{.COVERAGE_DIR}}/coverage.out -covermode=atomic ./...
+
+  itest:
+    deps: [ mkdir,vendor ]
+    cmds:
+      - go test -v -race -tags=integration -coverprofile={{.COVERAGE_DIR}}/coverage.out -covermode=atomic ./...
+
+  local-itest:
+    deps: [ mkdir,vendor ]
+    cmds:
+      - go test -v -race -tags=local,integration -coverprofile={{.COVERAGE_DIR}}/coverage.out -covermode=atomic ./...
+      - go tool cover -html={{.COVERAGE_DIR}}/coverage.out -o {{.COVERAGE_DIR}}/coverage.html
+
+
+
