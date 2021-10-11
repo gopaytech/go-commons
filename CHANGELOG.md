@@ -1,3 +1,10 @@
+# [0.14.0](https://github.com/gopaytech/go-commons/compare/v0.13.8...v0.14.0) (2021-10-11)
+
+
+### Features
+
+* revamp exec command, package renamed to cmd ([283dfcc](https://github.com/gopaytech/go-commons/commit/283dfccb51c41899e60a7acba7107686d57b43d4))
+
 ## [0.13.8](https://github.com/gopaytech/go-commons/compare/v0.13.7...v0.13.8) (2021-10-01)
 
 
