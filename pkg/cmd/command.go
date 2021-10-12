@@ -79,6 +79,19 @@ func (c *command) Exec(command string, arg ...string) (cmd *exec.Cmd, stdOut io.
 	return c.Execute(map[string]string{}, "", command, arg...)
 }
 
+//PipeToFile create or truncate file
+func PipeToFile(out io.ReadCloser, path string) (err error) {
+	defer out.Close()
+	openFile, err := os.OpenFile(path, os.O_RDWR|os.O_CREATE|os.O_TRUNC, 0755)
+	if err != nil {
+		return
+	}
+	defer openFile.Close()
+	_, err = openFile.ReadFrom(out)
+	return
+}
+
+
 func ScanAndClose(out io.ReadCloser, ops func(string)) {
 	defer out.Close()
 
