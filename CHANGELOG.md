@@ -1,3 +1,10 @@
+## [0.14.2](https://github.com/gopaytech/go-commons/compare/v0.14.1...v0.14.2) (2021-10-12)
+
+
+### Bug Fixes
+
+* return cmd object ([b8f7c4a](https://github.com/gopaytech/go-commons/commit/b8f7c4a777dd8dbbcb869156f1e350fdaa89029a))
+
 ## [0.14.1](https://github.com/gopaytech/go-commons/compare/v0.14.0...v0.14.1) (2021-10-11)
 
 
