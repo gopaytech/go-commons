@@ -1,3 +1,10 @@
+## [0.14.3](https://github.com/gopaytech/go-commons/compare/v0.14.2...v0.14.3) (2021-10-12)
+
+
+### Bug Fixes
+
+* add PipeToFile func ([8325c41](https://github.com/gopaytech/go-commons/commit/8325c4178c7aa8038ebeb129ad0aa1c2f4d17fbd))
+
 ## [0.14.2](https://github.com/gopaytech/go-commons/compare/v0.14.1...v0.14.2) (2021-10-12)
 
 
