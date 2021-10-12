@@ -1,3 +1,10 @@
+## [0.14.1](https://github.com/gopaytech/go-commons/compare/v0.14.0...v0.14.1) (2021-10-11)
+
+
+### Bug Fixes
+
+* add mock package for cmd ([af1c7d8](https://github.com/gopaytech/go-commons/commit/af1c7d8fc2700f165837efbff54d873a702a7acb))
+
 # [0.14.0](https://github.com/gopaytech/go-commons/compare/v0.13.8...v0.14.0) (2021-10-11)
 
 
