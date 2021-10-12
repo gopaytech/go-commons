@@ -13,10 +13,10 @@ import (
 )
 
 type CommandInterface interface {
-	Exec(command string, arg ...string) (stdOut io.ReadCloser, stdErr io.ReadCloser, err error)
+	Exec(command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error)
 	ExecAndWait(command string, arg ...string) (combinedOutput string, err error)
 
-	Execute(env map[string]string, dir string, command string, arg ...string) (stdOut io.ReadCloser, stdErr io.ReadCloser, err error)
+	Execute(env map[string]string, dir string, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error)
 	ExecuteAndWait(env map[string]string, dir string, command string, arg ...string) (combinedOutput string, err error)
 }
 
@@ -54,14 +54,14 @@ func (c *command) ExecuteAndWait(env map[string]string, dir string, command stri
 }
 
 //Execute command with env and working directory, this func will not block
-func (c *command) Execute(env map[string]string, dir string, command string, arg ...string) (stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
-	cmd := exec.Command(command, arg...)
+func (c *command) Execute(env map[string]string, dir string, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
+	cmd = exec.Command(command, arg...)
 	envs := strings.MapKVJoin(env)
 	cmd.Env = append(os.Environ(), envs...)
 
 	if !strings.IsStringEmpty(dir) {
 		if !file.DirExists(dir) {
-			return nil, nil, fmt.Errorf("working directory %s is not exists or readable", dir)
+			return nil, nil, nil, fmt.Errorf("working directory %s is not exists or readable", dir)
 		}
 		cmd.Dir = dir
 	}
@@ -75,7 +75,7 @@ func (c *command) Execute(env map[string]string, dir string, command string, arg
 }
 
 //Exec Simple execute, this func will not block
-func (c *command) Exec(command string, arg ...string) (stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
+func (c *command) Exec(command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
 	return c.Execute(map[string]string{}, "", command, arg...)
 }
 

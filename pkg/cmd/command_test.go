@@ -20,7 +20,7 @@ func TestExecuteAndWaitFailed(t *testing.T) {
 }
 
 func TestExecute(t *testing.T) {
-	stdOut, stdErr, err := Command.Exec("/usr/bin/bash", "cmd_loop_test.sh")
+	_,stdOut, stdErr, err := Command.Exec("/usr/bin/bash", "cmd_loop_test.sh")
 	assert.Nil(t, err)
 	assert.NotNil(t, stdOut)
 	assert.NotNil(t, stdErr)
@@ -30,7 +30,7 @@ func TestExecute(t *testing.T) {
 }
 
 func TestExecuteSuccess(t *testing.T) {
-	stdOut, stdErr, err := Command.Exec("/usr/bin/bash", "cmd_loop_test.sh")
+	_,stdOut, stdErr, err := Command.Exec("/usr/bin/bash", "cmd_loop_test.sh")
 	assert.Nil(t, err)
 	assert.NotNil(t, stdOut)
 	assert.NotNil(t, stdErr)

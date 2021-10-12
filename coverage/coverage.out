@@ -1,4 +1,10 @@
 mode: atomic
+github.com/gopaytech/go-commons/pkg/compress/gz.go:9.57,14.2 4 1
+github.com/gopaytech/go-commons/pkg/compress/gz.go:16.65,18.22 2 1
+github.com/gopaytech/go-commons/pkg/compress/gz.go:22.2,25.22 3 1
+github.com/gopaytech/go-commons/pkg/compress/gz.go:29.2,31.44 2 1
+github.com/gopaytech/go-commons/pkg/compress/gz.go:18.22,21.3 2 0
+github.com/gopaytech/go-commons/pkg/compress/gz.go:25.22,28.3 2 0
 github.com/gopaytech/go-commons/pkg/compress/tar.go:15.64,16.51 1 2
 github.com/gopaytech/go-commons/pkg/compress/tar.go:20.2,23.96 3 2
 github.com/gopaytech/go-commons/pkg/compress/tar.go:55.2,55.8 1 2
@@ -43,12 +49,6 @@ github.com/gopaytech/go-commons/pkg/compress/tar.go:113.27,114.53 1 0
 github.com/gopaytech/go-commons/pkg/compress/tar.go:114.53,116.6 1 0
 github.com/gopaytech/go-commons/pkg/compress/tar.go:120.18,122.5 1 0
 github.com/gopaytech/go-commons/pkg/compress/tar.go:124.18,126.5 1 0
-github.com/gopaytech/go-commons/pkg/compress/gz.go:9.57,14.2 4 1
-github.com/gopaytech/go-commons/pkg/compress/gz.go:16.65,18.22 2 1
-github.com/gopaytech/go-commons/pkg/compress/gz.go:22.2,25.22 3 1
-github.com/gopaytech/go-commons/pkg/compress/gz.go:29.2,31.44 2 1
-github.com/gopaytech/go-commons/pkg/compress/gz.go:18.22,21.3 2 0
-github.com/gopaytech/go-commons/pkg/compress/gz.go:25.22,28.3 2 0
 github.com/gopaytech/go-commons/pkg/encoding/base32.go:7.61,9.16 2 2
 github.com/gopaytech/go-commons/pkg/encoding/base32.go:13.2,13.32 1 1
 github.com/gopaytech/go-commons/pkg/encoding/base32.go:9.16,11.3 1 1
@@ -76,6 +76,11 @@ github.com/gopaytech/go-commons/pkg/statsd/client_mock.go:17.63,19.2 1 1
 github.com/gopaytech/go-commons/pkg/statsd/publisher.go:19.53,22.2 2 1
 github.com/gopaytech/go-commons/pkg/statsd/publisher.go:24.46,29.2 1 1
 github.com/gopaytech/go-commons/pkg/statsd/publisher.go:31.79,37.2 2 1
+github.com/gopaytech/go-commons/pkg/strings/builder.go:19.66,21.2 1 0
+github.com/gopaytech/go-commons/pkg/strings/builder.go:23.68,26.2 2 0
+github.com/gopaytech/go-commons/pkg/strings/builder.go:28.48,30.2 1 0
+github.com/gopaytech/go-commons/pkg/strings/builder.go:32.53,36.2 3 0
+github.com/gopaytech/go-commons/pkg/strings/builder.go:38.27,40.2 1 0
 github.com/gopaytech/go-commons/pkg/strings/random.go:14.59,16.19 2 0
 github.com/gopaytech/go-commons/pkg/strings/random.go:19.2,19.18 1 0
 github.com/gopaytech/go-commons/pkg/strings/random.go:16.19,18.3 1 0
@@ -99,11 +104,10 @@ github.com/gopaytech/go-commons/pkg/strings/string.go:52.46,54.2 1 1
 github.com/gopaytech/go-commons/pkg/strings/string.go:56.58,59.21 3 2
 github.com/gopaytech/go-commons/pkg/strings/string.go:62.2,62.8 1 2
 github.com/gopaytech/go-commons/pkg/strings/string.go:59.21,61.3 1 1
-github.com/gopaytech/go-commons/pkg/strings/builder.go:19.66,21.2 1 0
-github.com/gopaytech/go-commons/pkg/strings/builder.go:23.68,26.2 2 0
-github.com/gopaytech/go-commons/pkg/strings/builder.go:28.48,30.2 1 0
-github.com/gopaytech/go-commons/pkg/strings/builder.go:32.53,36.2 3 0
-github.com/gopaytech/go-commons/pkg/strings/builder.go:38.27,40.2 1 0
+github.com/gopaytech/go-commons/pkg/deb/builder_mock.go:9.73,12.2 2 0
+github.com/gopaytech/go-commons/pkg/deb/config.go:18.59,33.2 2 2
+github.com/gopaytech/go-commons/pkg/deb/nfpm_mock.go:14.73,17.2 2 0
+github.com/gopaytech/go-commons/pkg/deb/nfpm_mock.go:19.72,22.2 2 2
 github.com/gopaytech/go-commons/pkg/deb/builder.go:22.69,24.16 2 3
 github.com/gopaytech/go-commons/pkg/deb/builder.go:27.2,31.16 5 2
 github.com/gopaytech/go-commons/pkg/deb/builder.go:34.2,35.8 2 1
@@ -115,10 +119,6 @@ github.com/gopaytech/go-commons/pkg/deb/builder.go:49.2,49.8 1 2
 github.com/gopaytech/go-commons/pkg/deb/builder.go:40.16,42.3 1 1
 github.com/gopaytech/go-commons/pkg/deb/builder.go:44.30,48.3 3 2
 github.com/gopaytech/go-commons/pkg/deb/builder.go:52.27,58.2 1 0
-github.com/gopaytech/go-commons/pkg/deb/builder_mock.go:9.73,12.2 2 0
-github.com/gopaytech/go-commons/pkg/deb/config.go:18.59,33.2 2 2
-github.com/gopaytech/go-commons/pkg/deb/nfpm_mock.go:14.73,17.2 2 0
-github.com/gopaytech/go-commons/pkg/deb/nfpm_mock.go:19.72,22.2 2 2
 github.com/gopaytech/go-commons/pkg/tmpl/ignore.go:17.47,19.19 1 227
 github.com/gopaytech/go-commons/pkg/tmpl/ignore.go:24.2,24.37 1 226
 github.com/gopaytech/go-commons/pkg/tmpl/ignore.go:29.2,39.12 3 225
@@ -265,12 +265,12 @@ github.com/gopaytech/go-commons/pkg/cmd/command.go:40.3,40.16 1 0
 github.com/gopaytech/go-commons/pkg/cmd/command.go:37.27,39.4 1 0
 github.com/gopaytech/go-commons/pkg/cmd/command.go:45.25,47.3 1 1
 github.com/gopaytech/go-commons/pkg/cmd/command.go:49.16,51.3 1 1
-github.com/gopaytech/go-commons/pkg/cmd/command.go:57.149,62.33 4 2
+github.com/gopaytech/go-commons/pkg/cmd/command.go:57.164,62.33 4 2
 github.com/gopaytech/go-commons/pkg/cmd/command.go:69.2,74.8 4 2
 github.com/gopaytech/go-commons/pkg/cmd/command.go:62.33,63.27 1 0
 github.com/gopaytech/go-commons/pkg/cmd/command.go:66.3,66.16 1 0
 github.com/gopaytech/go-commons/pkg/cmd/command.go:63.27,65.4 1 0
-github.com/gopaytech/go-commons/pkg/cmd/command.go:78.111,80.2 1 2
+github.com/gopaytech/go-commons/pkg/cmd/command.go:78.126,80.2 1 2
 github.com/gopaytech/go-commons/pkg/cmd/command.go:82.56,88.21 4 1
 github.com/gopaytech/go-commons/pkg/cmd/command.go:88.21,90.3 1 5
 github.com/gopaytech/go-commons/pkg/cmd/command.go:93.86,102.12 6 1
