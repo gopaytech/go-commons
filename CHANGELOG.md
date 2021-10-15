@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/gopaytech/go-commons/compare/v0.14.3...v0.15.0) (2021-10-15)
+
+
+### Features
+
+* add jq and types pkg ([5b35042](https://github.com/gopaytech/go-commons/commit/5b35042e0e89271677c39045d47c54c259f79fe1))
+
 ## [0.14.3](https://github.com/gopaytech/go-commons/compare/v0.14.2...v0.14.3) (2021-10-12)
 
 
