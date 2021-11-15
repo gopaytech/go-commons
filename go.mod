@@ -21,6 +21,7 @@ require (
 	github.com/sony/sonyflake v1.0.0
 	github.com/spf13/viper v1.9.0
 	github.com/stretchr/testify v1.7.0
+	github.com/vektra/mockery/v2 v2.9.4 // indirect
 	github.com/xanzy/go-gitlab v0.51.1
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
 	gopkg.in/alexcesaro/statsd.v2 v2.0.0

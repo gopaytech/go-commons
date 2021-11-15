@@ -8,10 +8,20 @@ import (
 
 type Group interface {
 	ListAllProjects(id NameOrId) (<-chan gl.Project, error)
+	GetGroup(id NameOrId) (*gl.Group, error)
 }
 
 type group struct {
 	client *gl.Client
+}
+
+func (g *group) GetGroup(id NameOrId) (*gl.Group, error) {
+	getGroupOptions := &gl.GetGroupOptions{}
+	result, _, err := g.client.Groups.GetGroup(id.Get(), getGroupOptions)
+	if err != nil {
+		return nil, err
+	}
+	return result, nil
 }
 
 func NewGroup(client *gl.Client) Group {
