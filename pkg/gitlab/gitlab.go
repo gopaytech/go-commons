@@ -12,7 +12,7 @@ func NewClient(url string, token string) (*gl.Client, error) {
 
 type NameOrId struct {
 	Name string
-	id   int
+	ID   int
 }
 
 func NewName(name string) NameOrId {
@@ -28,7 +28,7 @@ func NewNameWithBaseUrl(name string, baseUrl string) NameOrId {
 }
 
 func NewId(id int) NameOrId {
-	return NameOrId{id: id}
+	return NameOrId{ID: id}
 }
 
 func (ni *NameOrId) Get() interface{} {
@@ -36,5 +36,5 @@ func (ni *NameOrId) Get() interface{} {
 		return ni.Name
 	}
 
-	return ni.id
+	return ni.ID
 }
