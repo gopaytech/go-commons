@@ -14,6 +14,29 @@ type Group struct {
 	mock.Mock
 }
 
+// CreateGroup provides a mock function with given fields: name, parent, visibility
+func (_m *Group) CreateGroup(name string, parent gitlab.NameOrId, visibility go_gitlab.VisibilityValue) (*go_gitlab.Group, error) {
+	ret := _m.Called(name, parent, visibility)
+
+	var r0 *go_gitlab.Group
+	if rf, ok := ret.Get(0).(func(string, gitlab.NameOrId, go_gitlab.VisibilityValue) *go_gitlab.Group); ok {
+		r0 = rf(name, parent, visibility)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*go_gitlab.Group)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(string, gitlab.NameOrId, go_gitlab.VisibilityValue) error); ok {
+		r1 = rf(name, parent, visibility)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // GetGroup provides a mock function with given fields: id
 func (_m *Group) GetGroup(id gitlab.NameOrId) (*go_gitlab.Group, error) {
 	ret := _m.Called(id)
