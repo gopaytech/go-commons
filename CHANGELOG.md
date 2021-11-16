@@ -1,3 +1,10 @@
+## [0.17.2](https://github.com/gopaytech/go-commons/compare/v0.17.1...v0.17.2) (2021-11-16)
+
+
+### Bug Fixes
+
+* generate gitlab mock ([7233a3c](https://github.com/gopaytech/go-commons/commit/7233a3c6d9e574647a88a2b0a1aaae6fd616b6f4))
+
 ## [0.17.1](https://github.com/gopaytech/go-commons/compare/v0.17.0...v0.17.1) (2021-11-16)
 
 
