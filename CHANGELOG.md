@@ -1,3 +1,10 @@
+# [0.17.0](https://github.com/gopaytech/go-commons/compare/v0.16.0...v0.17.0) (2021-11-16)
+
+
+### Features
+
+* add gitlab to create group and project ([#4](https://github.com/gopaytech/go-commons/issues/4)) ([cb15b68](https://github.com/gopaytech/go-commons/commit/cb15b6891ae689268bc4c4a52019b5fc4bb0c155))
+
 # [0.16.0](https://github.com/gopaytech/go-commons/compare/v0.15.0...v0.16.0) (2021-11-15)
 
 
