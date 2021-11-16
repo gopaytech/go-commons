@@ -1,3 +1,10 @@
+## [0.17.1](https://github.com/gopaytech/go-commons/compare/v0.17.0...v0.17.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* gitlab group create should return response ([#5](https://github.com/gopaytech/go-commons/issues/5)) ([d06e38c](https://github.com/gopaytech/go-commons/commit/d06e38c09be591e8d8491157288255e7e6212d88))
+
 # [0.17.0](https://github.com/gopaytech/go-commons/compare/v0.16.0...v0.17.0) (2021-11-16)
 
 
