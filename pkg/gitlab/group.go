@@ -9,21 +9,21 @@ import (
 type Group interface {
 	ListAllProjects(id NameOrId) (<-chan gl.Project, error)
 	GetGroup(id NameOrId) (*gl.Group, error)
-	CreateGroup(name string, parent NameOrId, visibility gl.VisibilityValue) (*gl.Group, error)
+	CreateGroup(name string, parent NameOrId, visibility gl.VisibilityValue) (*gl.Group, *gl.Response, error)
 }
 
 type group struct {
 	client *gl.Client
 }
 
-func (g *group) CreateGroup(name string, parent NameOrId, visibility gl.VisibilityValue) (*gl.Group, error) {
+func (g *group) CreateGroup(name string, parent NameOrId, visibility gl.VisibilityValue) (*gl.Group, *gl.Response, error) {
 	createGroupOptions := &gl.CreateGroupOptions{
-		Name:                           &name,
-		Visibility:                     gl.Visibility(visibility),
-		ParentID:                       &parent.ID,
+		Name:       &name,
+		Path:       &name,
+		Visibility: gl.Visibility(visibility),
+		ParentID:   &parent.ID,
 	}
-	group, _, err := g.client.Groups.CreateGroup(createGroupOptions)
-	return group, err
+	return g.client.Groups.CreateGroup(createGroupOptions)
 }
 
 func (g *group) GetGroup(id NameOrId) (*gl.Group, error) {
