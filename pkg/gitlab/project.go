@@ -2,17 +2,27 @@ package gitlab
 
 import (
 	"fmt"
-
 	gl "github.com/xanzy/go-gitlab"
 )
 
 type Project interface {
 	Get(id NameOrId) (*gl.Project, error)
 	GetDefaultBranch(id NameOrId) (*gl.Branch, error)
+	CreateProject(name string, parentID int, visibility gl.VisibilityValue) (*gl.Project, error)
 }
 
 type project struct {
 	client *gl.Client
+}
+
+func (p *project) CreateProject(name string, parentID int, visibility gl.VisibilityValue) (*gl.Project, error) {
+	project, _, err := p.client.Projects.CreateProject(&gl.CreateProjectOptions{
+		Name:        &name,
+		NamespaceID: &parentID,
+		Path:        nil,
+		Visibility:  gl.Visibility(visibility),
+	})
+	return project, err
 }
 
 func (p *project) GetDefaultBranch(id NameOrId) (*gl.Branch, error) {
