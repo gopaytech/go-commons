@@ -2,10 +2,11 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/gopaytech/go-commons/pkg/strings"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/gopaytech/go-commons/pkg/strings"
 
 	"github.com/stretchr/testify/assert"
 )

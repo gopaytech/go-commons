@@ -1,9 +1,10 @@
 package types
 
 import (
+	"testing"
+
 	"github.com/bxcodec/faker/v3"
 	"github.com/stretchr/testify/assert"
-	"testing"
 )
 
 func TestKeyValueStrings(t *testing.T) {

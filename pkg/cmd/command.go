@@ -3,11 +3,12 @@ package cmd
 import (
 	"bufio"
 	"fmt"
-	"github.com/gopaytech/go-commons/pkg/file"
 	"io"
 	"os"
 	"os/exec"
 	"time"
+
+	"github.com/gopaytech/go-commons/pkg/file"
 
 	"github.com/gopaytech/go-commons/pkg/strings"
 )
@@ -90,7 +91,6 @@ func PipeToFile(out io.ReadCloser, path string) (err error) {
 	_, err = openFile.ReadFrom(out)
 	return
 }
-
 
 func ScanAndClose(out io.ReadCloser, ops func(string)) {
 	defer out.Close()
