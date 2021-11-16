@@ -42,3 +42,4 @@ _output/
 bin/
 vendor/
 /node_modules/
+coverage/
