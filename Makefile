@@ -50,3 +50,7 @@ integration-test:
 .PHONY: local-integration-test
 local-integration-test:
 	go test -v -race -tags=local,integration -coverprofile=$(OUT_DIR)/coverage.out ./...
+
+.PHONY: mock
+mock:
+	cd $(CURRENT_DIR)/pkg/gitlab && mockery --all --case=underscore --output ./gitlab_mock --outpkg gitlab_mock
