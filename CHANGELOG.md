@@ -1,3 +1,10 @@
+## [0.18.1](https://github.com/gopaytech/go-commons/compare/v0.18.0...v0.18.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* init readme when creat repo ([32b4c21](https://github.com/gopaytech/go-commons/commit/32b4c212272e2449b02edfd35159a27956cadb80))
+
 # [0.18.0](https://github.com/gopaytech/go-commons/compare/v0.17.2...v0.18.0) (2021-11-17)
 
 
