@@ -54,3 +54,4 @@ local-integration-test:
 .PHONY: mock
 mock:
 	cd $(CURRENT_DIR)/pkg/gitlab && mockery --all --case=underscore --output ./gitlab_mock --outpkg gitlab_mock
+	cd $(CURRENT_DIR)/pkg/tmpl && mockery --all --case=underscore --output ./tmpl_mock --outpkg tmpl_mock
