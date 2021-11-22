@@ -1,3 +1,10 @@
+## [0.18.2](https://github.com/gopaytech/go-commons/compare/v0.18.1...v0.18.2) (2021-11-22)
+
+
+### Bug Fixes
+
+* add tmpl_mock to makefile ([d21e98b](https://github.com/gopaytech/go-commons/commit/d21e98b219b23a97e0c7102456f54c53b3ef4393))
+
 ## [0.18.1](https://github.com/gopaytech/go-commons/compare/v0.18.0...v0.18.1) (2021-11-19)
 
 
