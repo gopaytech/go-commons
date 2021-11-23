@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"bufio"
+	"context"
 	"fmt"
 	"io"
 	"os"
@@ -19,6 +20,12 @@ type CommandInterface interface {
 
 	Execute(env map[string]string, dir string, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error)
 	ExecuteAndWait(env map[string]string, dir string, command string, arg ...string) (combinedOutput string, err error)
+
+	ExecCtx(ctx context.Context, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error)
+	ExecAndWaitCtx(ctx context.Context, command string, arg ...string) (combinedOutput string, err error)
+
+	ExecuteCtx(ctx context.Context, env map[string]string, dir string, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error)
+	ExecuteAndWaitCtx(ctx context.Context, env map[string]string, dir string, command string, arg ...string) (combinedOutput string, err error)
 }
 
 type command struct{}
@@ -30,7 +37,17 @@ func (c *command) ExecAndWait(command string, arg ...string) (combinedOutput str
 
 //ExecuteAndWait Execute command with env and working directory and wait until command exit
 func (c *command) ExecuteAndWait(env map[string]string, dir string, command string, arg ...string) (combinedOutput string, err error) {
-	cmd := exec.Command(command, arg...)
+	return c.ExecuteAndWaitCtx(context.Background(), env, dir, command, arg...)
+}
+
+// ExecAndWaitCtx Simple execute and Wait
+func (c *command) ExecAndWaitCtx(ctx context.Context, command string, arg ...string) (combinedOutput string, err error) {
+	return c.ExecuteAndWaitCtx(ctx, map[string]string{}, "", command, arg...)
+}
+
+//ExecuteAndWaitCtx Execute command with env and working directory and wait until command exit
+func (c *command) ExecuteAndWaitCtx(ctx context.Context, env map[string]string, dir string, command string, arg ...string) (combinedOutput string, err error) {
+	cmd := exec.CommandContext(ctx, command, arg...)
 	envs := strings.MapKVJoin(env)
 	cmd.Env = append(os.Environ(), envs...)
 
@@ -56,7 +73,17 @@ func (c *command) ExecuteAndWait(env map[string]string, dir string, command stri
 
 //Execute command with env and working directory, this func will not block
 func (c *command) Execute(env map[string]string, dir string, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
-	cmd = exec.Command(command, arg...)
+	return c.ExecuteCtx(context.Background(), env, dir, command, arg...)
+}
+
+//Exec Simple execute, this func will not block
+func (c *command) Exec(command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
+	return c.Execute(map[string]string{}, "", command, arg...)
+}
+
+//ExecuteCtx command with env and working directory, this func will not block
+func (c *command) ExecuteCtx(ctx context.Context, env map[string]string, dir string, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
+	cmd = exec.CommandContext(ctx, command, arg...)
 	envs := strings.MapKVJoin(env)
 	cmd.Env = append(os.Environ(), envs...)
 
@@ -75,9 +102,9 @@ func (c *command) Execute(env map[string]string, dir string, command string, arg
 	return
 }
 
-//Exec Simple execute, this func will not block
-func (c *command) Exec(command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
-	return c.Execute(map[string]string{}, "", command, arg...)
+//ExecCtx Simple execute, this func will not block
+func (c *command) ExecCtx(ctx context.Context, command string, arg ...string) (cmd *exec.Cmd, stdOut io.ReadCloser, stdErr io.ReadCloser, err error) {
+	return c.ExecuteCtx(ctx, map[string]string{}, "", command, arg...)
 }
 
 //PipeToFile create or truncate file
