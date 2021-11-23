@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gopaytech/go-commons/pkg/strings"
+	"log"
 
 	"github.com/itchyny/gojq"
 )
@@ -24,10 +25,15 @@ type JsonQuery interface {
 	ExecuteToString(ctx context.Context) (output string, err error)
 }
 
-func ExecuteToString(ctx context.Context, inputJsonBytes []byte, query string, queryType QueryType) (output string, err error) {
+func ExecuteToString(ctx context.Context, inputBytes []byte, query string, queryType QueryType) (output string, err error) {
 	builder := strings.NewBuilder()
-	err = Execute(ctx, inputJsonBytes, query, queryType, func(value interface{}) (cont bool) {
-		builder.Write("%v", value)
+	err = Execute(ctx, inputBytes, query, queryType, func(value interface{}) (cont bool) {
+		jsonByte, err := json.Marshal(value)
+		if err != nil {
+			log.Panicln(err)
+			return false
+		}
+		builder.WriteBytes(jsonByte)
 		return true
 	})
 
