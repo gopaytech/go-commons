@@ -11,6 +11,14 @@ type FileQuery struct {
 	QueryType QueryType `json:"query_type"`
 }
 
+func (f *FileQuery) ExecuteToString(ctx context.Context) (output string, err error) {
+	fileBytes, err := os.ReadFile(f.Path)
+	if err != nil {
+		return "", err
+	}
+	return ExecuteToString(ctx, fileBytes, f.Query, f.QueryType)
+}
+
 func (f *FileQuery) Execute(ctx context.Context, callback QueryCallback) error {
 	fileBytes, err := os.ReadFile(f.Path)
 	if err != nil {

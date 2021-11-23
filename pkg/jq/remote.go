@@ -14,6 +14,28 @@ type RemoteQuery struct {
 	QueryType QueryType         `json:"query_type"`
 }
 
+func (v *RemoteQuery) ExecuteToString(ctx context.Context) (output string, err error) {
+	client := resty.New()
+	request := client.
+		R().
+		SetContext(ctx)
+
+	for k, v := range v.Headers {
+		request = request.SetHeader(k, v)
+	}
+
+	response, err := request.Get(v.SourceUrl)
+	if err != nil {
+		return "", err
+	}
+
+	if !response.IsSuccess() {
+		return "", fmt.Errorf("request return %v, error: %s", response.StatusCode(), response.Body())
+	}
+
+	return ExecuteToString(ctx, response.Body(), v.Query, v.QueryType)
+}
+
 func (v *RemoteQuery) Execute(ctx context.Context, callback QueryCallback) error {
 	client := resty.New()
 	request := client.

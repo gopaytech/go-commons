@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/gopaytech/go-commons/pkg/strings"
 
 	"github.com/itchyny/gojq"
 )
@@ -20,6 +21,18 @@ type QueryCallback func(value interface{}) (cont bool)
 
 type JsonQuery interface {
 	Execute(ctx context.Context, callback QueryCallback) error
+	ExecuteToString(ctx context.Context) (output string, err error)
+}
+
+func ExecuteToString(ctx context.Context, inputJsonBytes []byte, query string, queryType QueryType) (output string, err error) {
+	builder := strings.NewBuilder()
+	err = Execute(ctx, inputJsonBytes, query, queryType, func(value interface{}) (cont bool) {
+		builder.Write("%v", value)
+		return true
+	})
+
+	output = builder.ToString()
+	return
 }
 
 func Execute(ctx context.Context, inputJsonBytes []byte, query string, queryType QueryType, callback QueryCallback) error {

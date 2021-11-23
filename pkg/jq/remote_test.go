@@ -32,6 +32,18 @@ func TestRemoteQuery_Execute(t *testing.T) {
 		assert.NoError(t, err)
 	})
 
+	t.Run("given object json should pass execute to string", func(t *testing.T) {
+		query := &RemoteQuery{
+			SourceUrl: fmt.Sprintf("%s/posts.json", server.URL),
+			Query:     ".data[].title",
+			QueryType: ObjectType,
+		}
+
+		output, err := query.ExecuteToString(context.Background())
+		assert.NoError(t, err)
+		assert.NotEmpty(t, output)
+	})
+
 	t.Run("given array json should pass", func(t *testing.T) {
 		arrayQuery := NewRemoteQuery(fmt.Sprintf("%s/post-array.json", server.URL), map[string]string{}, ".[].body", ListType)
 		err := arrayQuery.Execute(context.Background(), func(value interface{}) bool {
@@ -39,6 +51,13 @@ func TestRemoteQuery_Execute(t *testing.T) {
 			return true
 		})
 
+		assert.NoError(t, err)
+	})
+
+	t.Run("given array json should pass execute to string", func(t *testing.T) {
+		arrayQuery := NewRemoteQuery(fmt.Sprintf("%s/post-array.json", server.URL), map[string]string{}, ".[].body", ListType)
+		output, err := arrayQuery.ExecuteToString(context.Background())
+		assert.NotEmpty(t, output)
 		assert.NoError(t, err)
 	})
 
@@ -58,5 +77,20 @@ func TestRemoteQuery_Execute(t *testing.T) {
 		})
 
 		assert.Error(t, err)
+	})
+
+	t.Run("given non exists url should fail", func(t *testing.T) {
+		query := &RemoteQuery{
+			SourceUrl: "httpx://randomsite.org",
+			Headers: map[string]string{
+				"title": "something",
+			},
+			Query:     ".data[].title",
+			QueryType: ObjectType,
+		}
+
+		output, err := query.ExecuteToString(context.Background())
+		assert.Error(t, err)
+		assert.Empty(t, output)
 	})
 }
