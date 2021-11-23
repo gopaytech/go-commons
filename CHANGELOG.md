@@ -1,3 +1,10 @@
+## [0.18.6](https://github.com/gopaytech/go-commons/compare/v0.18.5...v0.18.6) (2021-11-23)
+
+
+### Bug Fixes
+
+* parse to json before combine on jq.ExecuteToString ([9a54a5a](https://github.com/gopaytech/go-commons/commit/9a54a5ad788f72dcb4c5a4dfbe6cbc5ab5ff4030))
+
 ## [0.18.5](https://github.com/gopaytech/go-commons/compare/v0.18.4...v0.18.5) (2021-11-23)
 
 
