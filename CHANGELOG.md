@@ -1,3 +1,10 @@
+## [0.18.5](https://github.com/gopaytech/go-commons/compare/v0.18.4...v0.18.5) (2021-11-23)
+
+
+### Bug Fixes
+
+* add ExecuteToString for jq ([ca127d7](https://github.com/gopaytech/go-commons/commit/ca127d7d0fb639077588953f48a24ec562454af6))
+
 ## [0.18.4](https://github.com/gopaytech/go-commons/compare/v0.18.3...v0.18.4) (2021-11-23)
 
 
