@@ -1,3 +1,10 @@
+## [0.18.3](https://github.com/gopaytech/go-commons/compare/v0.18.2...v0.18.3) (2021-11-23)
+
+
+### Bug Fixes
+
+* add context for cmd commands ([0753b74](https://github.com/gopaytech/go-commons/commit/0753b74f2b020e2a74bcd8c755e04d6d107ac770))
+
 ## [0.18.2](https://github.com/gopaytech/go-commons/compare/v0.18.1...v0.18.2) (2021-11-22)
 
 
