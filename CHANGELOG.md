@@ -1,3 +1,10 @@
+## [0.18.4](https://github.com/gopaytech/go-commons/compare/v0.18.3...v0.18.4) (2021-11-23)
+
+
+### Bug Fixes
+
+* add LookupPath and LookupEnv for cmd module ([b02b411](https://github.com/gopaytech/go-commons/commit/b02b411cd93887f688d4b5fc535a6963a28e08ce))
+
 ## [0.18.3](https://github.com/gopaytech/go-commons/compare/v0.18.2...v0.18.3) (2021-11-23)
 
 
