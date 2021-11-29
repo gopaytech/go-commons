@@ -1,3 +1,10 @@
+## [0.18.7](https://github.com/gopaytech/go-commons/compare/v0.18.6...v0.18.7) (2021-11-29)
+
+
+### Bug Fixes
+
+* add OsEnv func to get all os env variable on Key Value format ([bb79a92](https://github.com/gopaytech/go-commons/commit/bb79a9230ab83709049df8fe735b9a7ebc6c5ed0))
+
 ## [0.18.6](https://github.com/gopaytech/go-commons/compare/v0.18.5...v0.18.6) (2021-11-23)
 
 
