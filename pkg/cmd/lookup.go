@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func LookPathDefault(executableName string, defaultPath string) (binaryPath string) {
@@ -35,4 +36,15 @@ func LookupEnv(key string) string {
 		log.Panicf("env key %s not found\n", key)
 	}
 	return value
+}
+
+func OsEnv() map[string]string {
+	output := map[string]string{}
+	for _, env := range os.Environ() {
+		envPair := strings.SplitN(env, "=", 2)
+		key := envPair[0]
+		value := envPair[1]
+		output[key] = value
+	}
+	return output
 }
