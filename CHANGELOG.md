@@ -1,3 +1,10 @@
+# [0.19.0](https://github.com/gopaytech/go-commons/compare/v0.18.7...v0.19.0) (2021-12-10)
+
+
+### Features
+
+* add group_variables ([9e0eae1](https://github.com/gopaytech/go-commons/commit/9e0eae131572bf852c350f5fa6b58af81de7bf64))
+
 ## [0.18.7](https://github.com/gopaytech/go-commons/compare/v0.18.6...v0.18.7) (2021-11-29)
 
 
