@@ -3,10 +3,11 @@ package deb
 import (
 	"bytes"
 	"errors"
+	"github.com/goreleaser/nfpm/v2"
+	"github.com/goreleaser/nfpm/v2/files"
 	"testing"
 
 	"github.com/gopaytech/go-commons/pkg/file"
-	"github.com/goreleaser/nfpm"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -99,7 +100,6 @@ func mockBuildSuccess(testContext *builderTestContext) {
 	nfpmInfo := nfpm.Info{
 		Name:        "test-package",
 		Version:     "v1.0.0",
-		Bindir:      "/opt/test-packager",
 		Arch:        "amd64",
 		Maintainer:  "Gopay-Systems",
 		Description: "test-package_v1.0.0",
@@ -107,8 +107,11 @@ func mockBuildSuccess(testContext *builderTestContext) {
 			Scripts: nfpm.Scripts{
 				PostRemove: "./postrm.sh",
 			},
-			Files: map[string]string{
-				"./package/pkg/binary": "/opt/test-packager/binary",
+			Contents: []*files.Content{
+				{
+					Source:      "./package/pkg/binary",
+					Destination: "/opt/test-packager/binary",
+				},
 			},
 		},
 	}
@@ -134,7 +137,6 @@ func mockBuildPackageError(testContext *builderTestContext) {
 	nfpmInfo := nfpm.Info{
 		Name:        "test-package",
 		Version:     "v1.0.0",
-		Bindir:      "/opt/test-packager",
 		Arch:        "amd64",
 		Maintainer:  "Gopay-Systems",
 		Description: "test-package_v1.0.0",
@@ -142,8 +144,11 @@ func mockBuildPackageError(testContext *builderTestContext) {
 			Scripts: nfpm.Scripts{
 				PostRemove: "./postrm.sh",
 			},
-			Files: map[string]string{
-				"./package/pkg/binary": "/opt/test-packager/binary",
+			Contents: []*files.Content{
+				{
+					Source:      "./package/pkg/binary",
+					Destination: "/opt/test-packager/binary",
+				},
 			},
 		},
 	}

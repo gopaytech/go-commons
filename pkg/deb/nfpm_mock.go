@@ -3,7 +3,7 @@ package deb
 import (
 	"io"
 
-	"github.com/goreleaser/nfpm"
+	"github.com/goreleaser/nfpm/v2"
 	"github.com/stretchr/testify/mock"
 )
 

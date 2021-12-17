@@ -2,8 +2,7 @@ package deb
 
 import (
 	"fmt"
-
-	"github.com/goreleaser/nfpm"
+	"github.com/goreleaser/nfpm/v2"
 )
 
 type Config struct {
@@ -20,7 +19,6 @@ func (c Config) ConvertToNFPMConfig() (config *nfpm.Info) {
 		Name:        c.Name,
 		Arch:        c.Arch,
 		Version:     c.Version,
-		Bindir:      c.Destination,
 		Maintainer:  "Gopay-Systems",
 		Description: fmt.Sprintf("%s_%s", c.Name, c.Version),
 		Overridables: nfpm.Overridables{

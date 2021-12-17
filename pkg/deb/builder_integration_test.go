@@ -9,7 +9,7 @@ import (
 
 	"github.com/gopaytech/go-commons/pkg/file"
 	"github.com/gopaytech/go-commons/pkg/strings"
-	"github.com/goreleaser/nfpm/deb"
+	"github.com/goreleaser/nfpm/v2/deb"
 	"github.com/stretchr/testify/assert"
 )
 

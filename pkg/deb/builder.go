@@ -3,10 +3,11 @@ package deb
 import (
 	"bytes"
 	"fmt"
+	"github.com/goreleaser/nfpm/v2/files"
 
 	"github.com/gopaytech/go-commons/pkg/file"
-	"github.com/goreleaser/nfpm"
-	"github.com/goreleaser/nfpm/deb"
+	"github.com/goreleaser/nfpm/v2"
+	"github.com/goreleaser/nfpm/v2/deb"
 )
 
 type Builder interface {
@@ -20,12 +21,12 @@ type builder struct {
 }
 
 func (b *builder) Build(config Config, filename string) (err error) {
-	mappedFiles, err := b.mapFiles(config.Source, config.Destination)
+	mappedContent, err := b.mapContent(config.Source, config.Destination)
 	if err != nil {
 		return
 	}
 	nfpmConfig := config.ConvertToNFPMConfig()
-	nfpmConfig.Files = mappedFiles
+	nfpmConfig.Overridables.Contents = mappedContent
 	contentBuffer := bytes.Buffer{}
 	err = b.packager.Package(nfpmConfig, &contentBuffer)
 	if err != nil {
@@ -35,16 +36,20 @@ func (b *builder) Build(config Config, filename string) (err error) {
 	return
 }
 
-func (b *builder) mapFiles(source string, target string) (mappedFiles map[string]string, err error) {
-	files, err := b.getFilesInDirectoryFunc(source)
+func (b *builder) mapContent(source string, target string) (mappedContent []*files.Content, err error) {
+	sourceFiles, err := b.getFilesInDirectoryFunc(source)
 	if err != nil {
 		return
 	}
-	mappedFiles = map[string]string{}
-	for _, _file := range files {
-		sourceFiles := fmt.Sprintf("%s/%s", source, _file)
-		targetFiles := fmt.Sprintf("%s/%s", target, _file)
-		mappedFiles[sourceFiles] = targetFiles
+	mappedContent = []*files.Content{}
+	for _, _file := range sourceFiles {
+		sourceFile := fmt.Sprintf("%s/%s", source, _file)
+		targetFile := fmt.Sprintf("%s/%s", target, _file)
+		content := &files.Content{
+			Source:      sourceFile,
+			Destination: targetFile,
+		}
+		mappedContent = append(mappedContent, content)
 	}
 	return
 }
