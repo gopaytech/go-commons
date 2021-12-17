@@ -1,3 +1,10 @@
+## [0.19.1](https://github.com/gopaytech/go-commons/compare/v0.19.0...v0.19.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* update nfpm to version 2 ([1ae531d](https://github.com/gopaytech/go-commons/commit/1ae531dbec0764b61d5b1c9e041727a36f70fea9))
+
 # [0.19.0](https://github.com/gopaytech/go-commons/compare/v0.18.7...v0.19.0) (2021-12-10)
 
 
