@@ -219,3 +219,26 @@ func (result *scanResult) Execute(data interface{}) (mapResult map[string]string
 
 	return
 }
+func (result *scanResult) addInternalFunction() {
+	result.template.Funcs(template.FuncMap{
+		"Iterate": func(count *uint) []uint {
+			var counter uint
+			var items []uint
+			for counter = 0; counter < (*count); counter++ {
+				items = append(items, counter)
+			}
+			return items
+		},
+	})
+}
+
+func NewScanResult(rootPath string, template *template.Template, templateMap FileMap, option *ScanOption) ScanResult {
+	result := &scanResult{
+		rootPath:    rootPath,
+		template:    template,
+		templateMap: templateMap,
+		option:      option,
+	}
+	result.addInternalFunction()
+	return result
+}

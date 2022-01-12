@@ -92,12 +92,6 @@ func TemplateScanOption(scanPath string, option *ScanOption) (ScanResult, error)
 		rootTemplate = rootTemplate.Delims(option.StartDelim, option.EndDelim)
 	}
 
-	result := &scanResult{
-		rootPath: scanPath,
-		template: rootTemplate,
-		option:   option,
-	}
-
 	// start directory walk
 	templateMap := FileMap{}
 	err := filepath.Walk(scanPath, func(path string, info os.FileInfo, err error) error {
@@ -124,7 +118,7 @@ func TemplateScanOption(scanPath string, option *ScanOption) (ScanResult, error)
 				}
 
 				// initiate new template with path as name
-				innerTemplate := result.template.New(relativePath).Funcs(sprig.TxtFuncMap())
+				innerTemplate := rootTemplate.New(relativePath).Funcs(sprig.TxtFuncMap())
 
 				// parse template
 				_, err = innerTemplate.Parse(string(byteArray))
@@ -138,9 +132,7 @@ func TemplateScanOption(scanPath string, option *ScanOption) (ScanResult, error)
 
 		return nil
 	})
-
-	result.templateMap = templateMap
-
+	result := NewScanResult(scanPath, rootTemplate, templateMap, option)
 	return result, err
 }
 
