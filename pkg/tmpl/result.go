@@ -220,7 +220,7 @@ func (result *scanResult) Execute(data interface{}) (mapResult map[string]string
 	return
 }
 func (result *scanResult) addInternalFunction() {
-	result.template.Funcs(template.FuncMap{
+	result.template = result.template.Funcs(template.FuncMap{
 		"Iterate": func(count *uint) []uint {
 			var counter uint
 			var items []uint
