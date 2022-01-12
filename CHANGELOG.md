@@ -1,3 +1,10 @@
+## [0.20.1](https://github.com/gopaytech/go-commons/compare/v0.20.0...v0.20.1) (2022-01-12)
+
+
+### Bug Fixes
+
+* template internal function registration ([17c26ab](https://github.com/gopaytech/go-commons/commit/17c26abc4fdbc3694b2711c55d79ceda6dd5932f))
+
 # [0.20.0](https://github.com/gopaytech/go-commons/compare/v0.19.1...v0.20.0) (2022-01-12)
 
 
