@@ -1,3 +1,10 @@
+# [0.20.0](https://github.com/gopaytech/go-commons/compare/v0.19.1...v0.20.0) (2022-01-12)
+
+
+### Features
+
+* add iterator function to template execution ([7e87d09](https://github.com/gopaytech/go-commons/commit/7e87d0967987dab547d954010d184f36b43076a9))
+
 ## [0.19.1](https://github.com/gopaytech/go-commons/compare/v0.19.0...v0.19.1) (2021-12-17)
 
 
