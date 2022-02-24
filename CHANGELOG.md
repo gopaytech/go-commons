@@ -1,3 +1,10 @@
+## [0.20.2](https://github.com/gopaytech/go-commons/compare/v0.20.1...v0.20.2) (2022-02-24)
+
+
+### Bug Fixes
+
+* bump sprig version to v3.2.1 ([45ea55b](https://github.com/gopaytech/go-commons/commit/45ea55bfd20db54e4a3f1a10ceabeb1a43074400))
+
 ## [0.20.1](https://github.com/gopaytech/go-commons/compare/v0.20.0...v0.20.1) (2022-01-12)
 
 
