@@ -1,3 +1,10 @@
+# [0.21.0](https://github.com/gopaytech/go-commons/compare/v0.20.2...v0.21.0) (2022-07-11)
+
+
+### Features
+
+* add functionality to create protected branch ([49c66ec](https://github.com/gopaytech/go-commons/commit/49c66ec6567a7bd7cfe9949e1274a7082a2fd0a3))
+
 ## [0.20.2](https://github.com/gopaytech/go-commons/compare/v0.20.1...v0.20.2) (2022-02-24)
 
 
