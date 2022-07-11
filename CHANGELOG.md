@@ -1,3 +1,10 @@
+## [0.21.1](https://github.com/gopaytech/go-commons/compare/v0.21.0...v0.21.1) (2022-07-11)
+
+
+### Bug Fixes
+
+* change wrong variable references ([84b4689](https://github.com/gopaytech/go-commons/commit/84b468937e03b090577272336d6ce5356069de2b))
+
 # [0.21.0](https://github.com/gopaytech/go-commons/compare/v0.20.2...v0.21.0) (2022-07-11)
 
 
