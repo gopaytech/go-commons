@@ -14,7 +14,7 @@ func (p *protectedBranch) CreateProtectedBranch(projectID NameOrId, branchName s
     opts := &gl.ProtectRepositoryBranchesOptions{
         Name: &branchName,
     }
-    return p.client.ProtectedBranches.ProtectRepositoryBranches(projectID, opts)
+    return p.client.ProtectedBranches.ProtectRepositoryBranches(projectID.ID, opts)
 }
 
 func NewProtectedBranch(client *gl.Client) ProtectedBranch {
