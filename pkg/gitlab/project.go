@@ -2,6 +2,7 @@ package gitlab
 
 import (
 	"fmt"
+
 	gl "github.com/xanzy/go-gitlab"
 )
 
@@ -9,10 +10,18 @@ type Project interface {
 	Get(id NameOrId) (*gl.Project, error)
 	GetDefaultBranch(id NameOrId) (*gl.Branch, error)
 	CreateProject(name string, parentID int, visibility gl.VisibilityValue) (*gl.Project, error)
+	CreateMinimalMRApproval(id NameOrId, minimalApproval int) (*gl.Project, error)
 }
 
 type project struct {
 	client *gl.Client
+}
+
+func (p *project) CreateMinimalMRApproval(id NameOrId, minimalApproval int) (*gl.Project, error) {
+	project, _, err := p.client.Projects.EditProject(id.ID, &gl.EditProjectOptions{
+		ApprovalsBeforeMerge: &minimalApproval,
+	})
+	return project, err
 }
 
 func (p *project) CreateProject(name string, parentID int, visibility gl.VisibilityValue) (*gl.Project, error) {
