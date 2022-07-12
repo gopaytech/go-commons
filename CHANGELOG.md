@@ -1,3 +1,15 @@
+# [0.22.0](https://github.com/gopaytech/go-commons/compare/v0.21.2...v0.22.0) (2022-07-12)
+
+
+### Bug Fixes
+
+* regenerate mock ([8c576f5](https://github.com/gopaytech/go-commons/commit/8c576f532c27ffcba234cf19426fe17a04ce834f))
+
+
+### Features
+
+* add method to create minimal mr approval ([583f02c](https://github.com/gopaytech/go-commons/commit/583f02cb346cb0b393012e3c673924a31a54503f))
+
 ## [0.21.2](https://github.com/gopaytech/go-commons/compare/v0.21.1...v0.21.2) (2022-07-11)
 
 
