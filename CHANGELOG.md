@@ -1,3 +1,10 @@
+# [0.23.0](https://github.com/gopaytech/go-commons/compare/v0.22.0...v0.23.0) (2022-07-26)
+
+
+### Features
+
+* add gitlab capabilities to get jobs by project and pipeline id ([5fd2b2e](https://github.com/gopaytech/go-commons/commit/5fd2b2e271971aaaceded3822d8ae1ab3c007edc))
+
 # [0.22.0](https://github.com/gopaytech/go-commons/compare/v0.21.2...v0.22.0) (2022-07-12)
 
 
