@@ -1,3 +1,10 @@
+# [0.24.0](https://github.com/gopaytech/go-commons/compare/v0.23.0...v0.24.0) (2022-08-22)
+
+
+### Features
+
+* add feature to get latest tag of a repo ([5d3a326](https://github.com/gopaytech/go-commons/commit/5d3a326f73a1e7d09815ead7476850bea51c1fa7))
+
 # [0.23.0](https://github.com/gopaytech/go-commons/compare/v0.22.0...v0.23.0) (2022-07-26)
 
 
