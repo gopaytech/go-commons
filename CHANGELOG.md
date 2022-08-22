@@ -1,3 +1,10 @@
+## [0.24.1](https://github.com/gopaytech/go-commons/compare/v0.24.0...v0.24.1) (2022-08-22)
+
+
+### Bug Fixes
+
+* use project name to get list tags ([12696ee](https://github.com/gopaytech/go-commons/commit/12696ee173e8f535501c3c2178d17fb76f2e5269))
+
 # [0.24.0](https://github.com/gopaytech/go-commons/compare/v0.23.0...v0.24.0) (2022-08-22)
 
 
