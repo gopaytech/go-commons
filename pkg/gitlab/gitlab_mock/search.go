@@ -46,6 +46,38 @@ func (_m *Search) ProjectsByGroup(parent gitlab.NameOrId, name string) ([]*go_gi
 	return r0, r1, r2
 }
 
+// ProjectsByName provides a mock function with given fields: name
+func (_m *Search) ProjectsByName(name string) ([]*go_gitlab.Project, *go_gitlab.Response, error) {
+	ret := _m.Called(name)
+
+	var r0 []*go_gitlab.Project
+	if rf, ok := ret.Get(0).(func(string) []*go_gitlab.Project); ok {
+		r0 = rf(name)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).([]*go_gitlab.Project)
+		}
+	}
+
+	var r1 *go_gitlab.Response
+	if rf, ok := ret.Get(1).(func(string) *go_gitlab.Response); ok {
+		r1 = rf(name)
+	} else {
+		if ret.Get(1) != nil {
+			r1 = ret.Get(1).(*go_gitlab.Response)
+		}
+	}
+
+	var r2 error
+	if rf, ok := ret.Get(2).(func(string) error); ok {
+		r2 = rf(name)
+	} else {
+		r2 = ret.Error(2)
+	}
+
+	return r0, r1, r2
+}
+
 type mockConstructorTestingTNewSearch interface {
 	mock.TestingT
 	Cleanup(func())

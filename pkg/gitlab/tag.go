@@ -15,7 +15,7 @@ type tag struct {
 }
 
 func (t *tag) GetLatestTag(pid NameOrId, search string) (*gl.Tag, error) {
-	tags, _, err := t.client.Tags.ListTags(pid.Name, &gl.ListTagsOptions{
+	tags, _, err := t.client.Tags.ListTags(pid.ID, &gl.ListTagsOptions{
 		ListOptions: gl.ListOptions{},
 		Search:      &search,
 	})
