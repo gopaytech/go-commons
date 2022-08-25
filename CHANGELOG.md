@@ -1,3 +1,10 @@
+# [0.25.0](https://github.com/gopaytech/go-commons/compare/v0.24.1...v0.25.0) (2022-08-25)
+
+
+### Features
+
+* add feature to search projects by name ([27ed781](https://github.com/gopaytech/go-commons/commit/27ed781c6a96b1505a41e9a78c02f45600b26f65))
+
 ## [0.24.1](https://github.com/gopaytech/go-commons/compare/v0.24.0...v0.24.1) (2022-08-22)
 
 
