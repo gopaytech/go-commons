@@ -15,12 +15,15 @@ const (
 	StateClosed MergeRequestState = "closed"
 	StateLocked MergeRequestState = "locked"
 	StateMerged MergeRequestState = "merged"
+
+	MasterBranchName = "master"
 )
 
 type MergeRequest interface {
 	Get(projectId NameOrId, mergeRequestId int) (*gl.MergeRequest, error)
 	Create(projectId NameOrId, sourceBranch string, targetBranch string, title string) (*gl.MergeRequest, error)
 	CreateToDefault(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error)
+	CreateToMaster(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error)
 	Approve(projectId NameOrId, mergeRequestID int) error
 	Close(projectId NameOrId, mergeRequestID int) error
 	Accept(projectId NameOrId, mergeRequestID int, removeBranch bool) (*gl.MergeRequest, error)
@@ -56,13 +59,21 @@ func (e *mergeRequest) CreateToDefault(projectId NameOrId, sourceBranch string, 
 	return e.Create(projectId, sourceBranch, branch.Name, title)
 }
 
+func (e *mergeRequest) CreateToMaster(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error) {
+	branch, err := e.project.GetBranchByName(projectId, MasterBranchName)
+	if err != nil {
+		return nil, err
+	}
+
+	return e.Create(projectId, sourceBranch, branch.Name, title)
+}
+
 func (e *mergeRequest) Create(projectId NameOrId, sourceBranch string, targetBranch string, title string) (*gl.MergeRequest, error) {
 	mergeRequest, _, err := e.client.MergeRequests.CreateMergeRequest(projectId.Get(), &gl.CreateMergeRequestOptions{
 		SourceBranch: gl.String(sourceBranch),
 		TargetBranch: gl.String(targetBranch),
 		Title:        &title,
 	})
-
 	if err != nil {
 		return nil, err
 	}
