@@ -9,6 +9,7 @@ import (
 type Project interface {
 	Get(id NameOrId) (*gl.Project, error)
 	GetDefaultBranch(id NameOrId) (*gl.Branch, error)
+	GetBranchByName(id NameOrId, name string) (*gl.Branch, error)
 	CreateProject(name string, parentID int, visibility gl.VisibilityValue) (*gl.Project, error)
 	CreateMinimalMRApproval(id NameOrId, minimalApproval int) (*gl.Project, error)
 }
@@ -49,6 +50,15 @@ func (p *project) GetDefaultBranch(id NameOrId) (*gl.Branch, error) {
 	}
 
 	return nil, fmt.Errorf("default branch for project %v is not found", id.Get())
+}
+
+func (p *project) GetBranchByName(id NameOrId, name string) (*gl.Branch, error) {
+	branch, _, err := p.client.Branches.GetBranch(id.Get(), name)
+	if err != nil {
+		return nil, err
+	}
+
+	return branch, nil
 }
 
 func (p *project) Get(id NameOrId) (*gl.Project, error) {
