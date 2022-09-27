@@ -1,3 +1,10 @@
+# [0.26.0](https://github.com/gopaytech/go-commons/compare/v0.25.0...v0.26.0) (2022-09-27)
+
+
+### Features
+
+* add GetBranchByName from project ([bed814b](https://github.com/gopaytech/go-commons/commit/bed814b74099749ec030b7b3f73d9ae7c1104192))
+
 # [0.25.0](https://github.com/gopaytech/go-commons/compare/v0.24.1...v0.25.0) (2022-08-25)
 
 
