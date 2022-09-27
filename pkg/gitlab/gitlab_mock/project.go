@@ -83,6 +83,29 @@ func (_m *Project) Get(id gitlab.NameOrId) (*go_gitlab.Project, error) {
 	return r0, r1
 }
 
+// GetBranchByName provides a mock function with given fields: id, name
+func (_m *Project) GetBranchByName(id gitlab.NameOrId, name string) (*go_gitlab.Branch, error) {
+	ret := _m.Called(id, name)
+
+	var r0 *go_gitlab.Branch
+	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, string) *go_gitlab.Branch); ok {
+		r0 = rf(id, name)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*go_gitlab.Branch)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, string) error); ok {
+		r1 = rf(id, name)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // GetDefaultBranch provides a mock function with given fields: id
 func (_m *Project) GetDefaultBranch(id gitlab.NameOrId) (*go_gitlab.Branch, error) {
 	ret := _m.Called(id)

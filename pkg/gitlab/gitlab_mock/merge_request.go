@@ -111,6 +111,29 @@ func (_m *MergeRequest) CreateToDefault(projectId gitlab.NameOrId, sourceBranch 
 	return r0, r1
 }
 
+// CreateToMaster provides a mock function with given fields: projectId, sourceBranch, title
+func (_m *MergeRequest) CreateToMaster(projectId gitlab.NameOrId, sourceBranch string, title string) (*go_gitlab.MergeRequest, error) {
+	ret := _m.Called(projectId, sourceBranch, title)
+
+	var r0 *go_gitlab.MergeRequest
+	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, string, string) *go_gitlab.MergeRequest); ok {
+		r0 = rf(projectId, sourceBranch, title)
+	} else {
+		if ret.Get(0) != nil {
+			r0 = ret.Get(0).(*go_gitlab.MergeRequest)
+		}
+	}
+
+	var r1 error
+	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, string, string) error); ok {
+		r1 = rf(projectId, sourceBranch, title)
+	} else {
+		r1 = ret.Error(1)
+	}
+
+	return r0, r1
+}
+
 // Get provides a mock function with given fields: projectId, mergeRequestId
 func (_m *MergeRequest) Get(projectId gitlab.NameOrId, mergeRequestId int) (*go_gitlab.MergeRequest, error) {
 	ret := _m.Called(projectId, mergeRequestId)
