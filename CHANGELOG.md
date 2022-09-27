@@ -1,3 +1,10 @@
+## [0.27.1](https://github.com/gopaytech/go-commons/compare/v0.27.0...v0.27.1) (2022-09-27)
+
+
+### Bug Fixes
+
+* regenerate mock ([ba1a115](https://github.com/gopaytech/go-commons/commit/ba1a1154097d57e385b0b5a8baee4b06999c0eb8))
+
 # [0.27.0](https://github.com/gopaytech/go-commons/compare/v0.26.0...v0.27.0) (2022-09-27)
 
 
