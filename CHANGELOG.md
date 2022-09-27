@@ -1,3 +1,10 @@
+# [0.27.0](https://github.com/gopaytech/go-commons/compare/v0.26.0...v0.27.0) (2022-09-27)
+
+
+### Features
+
+* add CreateToMaster on merge request ([0169b5d](https://github.com/gopaytech/go-commons/commit/0169b5db6ce5dcd1bf91ae877dd0dbaca0abb811))
+
 # [0.26.0](https://github.com/gopaytech/go-commons/compare/v0.25.0...v0.26.0) (2022-09-27)
 
 
