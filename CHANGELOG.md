@@ -1,3 +1,10 @@
+## [0.27.3](https://github.com/gopaytech/go-commons/compare/v0.27.2...v0.27.3) (2022-09-29)
+
+
+### Bug Fixes
+
+* use getter instead of access property directly ([1948357](https://github.com/gopaytech/go-commons/commit/1948357dcbbc35c1279c604f3168bf01d9849681))
+
 ## [0.27.2](https://github.com/gopaytech/go-commons/compare/v0.27.1...v0.27.2) (2022-09-29)
 
 
