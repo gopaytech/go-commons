@@ -42,7 +42,7 @@ func (e *mergeRequest) ResetApproval(projectID NameOrId, mergeRequestID int) err
 	}
 
 	for _, rule := range rules {
-		_, err := e.client.MergeRequestApprovals.DeleteApprovalRule(projectID, mergeRequestID, rule.ID)
+		_, err := e.client.MergeRequestApprovals.DeleteApprovalRule(projectID.Get(), mergeRequestID, rule.ID)
 		if err != nil {
 			return err
 		}
