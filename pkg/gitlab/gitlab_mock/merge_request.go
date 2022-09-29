@@ -14,13 +14,13 @@ type MergeRequest struct {
 	mock.Mock
 }
 
-// Accept provides a mock function with given fields: projectId, mergeRequestID, removeBranch, whenPipelinePassed
-func (_m *MergeRequest) Accept(projectId gitlab.NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*go_gitlab.MergeRequest, error) {
-	ret := _m.Called(projectId, mergeRequestID, removeBranch, whenPipelinePassed)
+// Accept provides a mock function with given fields: projectID, mergeRequestID, removeBranch, whenPipelinePassed
+func (_m *MergeRequest) Accept(projectID gitlab.NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*go_gitlab.MergeRequest, error) {
+	ret := _m.Called(projectID, mergeRequestID, removeBranch, whenPipelinePassed)
 
 	var r0 *go_gitlab.MergeRequest
 	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, int, bool, bool) *go_gitlab.MergeRequest); ok {
-		r0 = rf(projectId, mergeRequestID, removeBranch, whenPipelinePassed)
+		r0 = rf(projectID, mergeRequestID, removeBranch, whenPipelinePassed)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*go_gitlab.MergeRequest)
@@ -29,7 +29,7 @@ func (_m *MergeRequest) Accept(projectId gitlab.NameOrId, mergeRequestID int, re
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, int, bool, bool) error); ok {
-		r1 = rf(projectId, mergeRequestID, removeBranch, whenPipelinePassed)
+		r1 = rf(projectID, mergeRequestID, removeBranch, whenPipelinePassed)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -37,13 +37,13 @@ func (_m *MergeRequest) Accept(projectId gitlab.NameOrId, mergeRequestID int, re
 	return r0, r1
 }
 
-// Approve provides a mock function with given fields: projectId, mergeRequestID
-func (_m *MergeRequest) Approve(projectId gitlab.NameOrId, mergeRequestID int) error {
-	ret := _m.Called(projectId, mergeRequestID)
+// Approve provides a mock function with given fields: projectID, mergeRequestID
+func (_m *MergeRequest) Approve(projectID gitlab.NameOrId, mergeRequestID int) error {
+	ret := _m.Called(projectID, mergeRequestID)
 
 	var r0 error
 	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, int) error); ok {
-		r0 = rf(projectId, mergeRequestID)
+		r0 = rf(projectID, mergeRequestID)
 	} else {
 		r0 = ret.Error(0)
 	}
@@ -51,13 +51,13 @@ func (_m *MergeRequest) Approve(projectId gitlab.NameOrId, mergeRequestID int) e
 	return r0
 }
 
-// Close provides a mock function with given fields: projectId, mergeRequestID
-func (_m *MergeRequest) Close(projectId gitlab.NameOrId, mergeRequestID int) error {
-	ret := _m.Called(projectId, mergeRequestID)
+// Close provides a mock function with given fields: projectID, mergeRequestID
+func (_m *MergeRequest) Close(projectID gitlab.NameOrId, mergeRequestID int) error {
+	ret := _m.Called(projectID, mergeRequestID)
 
 	var r0 error
 	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, int) error); ok {
-		r0 = rf(projectId, mergeRequestID)
+		r0 = rf(projectID, mergeRequestID)
 	} else {
 		r0 = ret.Error(0)
 	}
@@ -65,13 +65,13 @@ func (_m *MergeRequest) Close(projectId gitlab.NameOrId, mergeRequestID int) err
 	return r0
 }
 
-// Create provides a mock function with given fields: projectId, sourceBranch, targetBranch, title
-func (_m *MergeRequest) Create(projectId gitlab.NameOrId, sourceBranch string, targetBranch string, title string) (*go_gitlab.MergeRequest, error) {
-	ret := _m.Called(projectId, sourceBranch, targetBranch, title)
+// Create provides a mock function with given fields: projectID, sourceBranch, targetBranch, title
+func (_m *MergeRequest) Create(projectID gitlab.NameOrId, sourceBranch string, targetBranch string, title string) (*go_gitlab.MergeRequest, error) {
+	ret := _m.Called(projectID, sourceBranch, targetBranch, title)
 
 	var r0 *go_gitlab.MergeRequest
 	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, string, string, string) *go_gitlab.MergeRequest); ok {
-		r0 = rf(projectId, sourceBranch, targetBranch, title)
+		r0 = rf(projectID, sourceBranch, targetBranch, title)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*go_gitlab.MergeRequest)
@@ -80,7 +80,7 @@ func (_m *MergeRequest) Create(projectId gitlab.NameOrId, sourceBranch string, t
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, string, string, string) error); ok {
-		r1 = rf(projectId, sourceBranch, targetBranch, title)
+		r1 = rf(projectID, sourceBranch, targetBranch, title)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -88,13 +88,13 @@ func (_m *MergeRequest) Create(projectId gitlab.NameOrId, sourceBranch string, t
 	return r0, r1
 }
 
-// CreateToDefault provides a mock function with given fields: projectId, sourceBranch, title
-func (_m *MergeRequest) CreateToDefault(projectId gitlab.NameOrId, sourceBranch string, title string) (*go_gitlab.MergeRequest, error) {
-	ret := _m.Called(projectId, sourceBranch, title)
+// CreateToDefault provides a mock function with given fields: projectID, sourceBranch, title
+func (_m *MergeRequest) CreateToDefault(projectID gitlab.NameOrId, sourceBranch string, title string) (*go_gitlab.MergeRequest, error) {
+	ret := _m.Called(projectID, sourceBranch, title)
 
 	var r0 *go_gitlab.MergeRequest
 	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, string, string) *go_gitlab.MergeRequest); ok {
-		r0 = rf(projectId, sourceBranch, title)
+		r0 = rf(projectID, sourceBranch, title)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*go_gitlab.MergeRequest)
@@ -103,7 +103,7 @@ func (_m *MergeRequest) CreateToDefault(projectId gitlab.NameOrId, sourceBranch 
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, string, string) error); ok {
-		r1 = rf(projectId, sourceBranch, title)
+		r1 = rf(projectID, sourceBranch, title)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -111,13 +111,13 @@ func (_m *MergeRequest) CreateToDefault(projectId gitlab.NameOrId, sourceBranch 
 	return r0, r1
 }
 
-// CreateToMaster provides a mock function with given fields: projectId, sourceBranch, title
-func (_m *MergeRequest) CreateToMaster(projectId gitlab.NameOrId, sourceBranch string, title string) (*go_gitlab.MergeRequest, error) {
-	ret := _m.Called(projectId, sourceBranch, title)
+// CreateToMaster provides a mock function with given fields: projectID, sourceBranch, title
+func (_m *MergeRequest) CreateToMaster(projectID gitlab.NameOrId, sourceBranch string, title string) (*go_gitlab.MergeRequest, error) {
+	ret := _m.Called(projectID, sourceBranch, title)
 
 	var r0 *go_gitlab.MergeRequest
 	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, string, string) *go_gitlab.MergeRequest); ok {
-		r0 = rf(projectId, sourceBranch, title)
+		r0 = rf(projectID, sourceBranch, title)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*go_gitlab.MergeRequest)
@@ -126,7 +126,7 @@ func (_m *MergeRequest) CreateToMaster(projectId gitlab.NameOrId, sourceBranch s
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, string, string) error); ok {
-		r1 = rf(projectId, sourceBranch, title)
+		r1 = rf(projectID, sourceBranch, title)
 	} else {
 		r1 = ret.Error(1)
 	}
@@ -134,13 +134,13 @@ func (_m *MergeRequest) CreateToMaster(projectId gitlab.NameOrId, sourceBranch s
 	return r0, r1
 }
 
-// Get provides a mock function with given fields: projectId, mergeRequestId
-func (_m *MergeRequest) Get(projectId gitlab.NameOrId, mergeRequestId int) (*go_gitlab.MergeRequest, error) {
-	ret := _m.Called(projectId, mergeRequestId)
+// Get provides a mock function with given fields: projectID, mergeRequestID
+func (_m *MergeRequest) Get(projectID gitlab.NameOrId, mergeRequestID int) (*go_gitlab.MergeRequest, error) {
+	ret := _m.Called(projectID, mergeRequestID)
 
 	var r0 *go_gitlab.MergeRequest
 	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, int) *go_gitlab.MergeRequest); ok {
-		r0 = rf(projectId, mergeRequestId)
+		r0 = rf(projectID, mergeRequestID)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*go_gitlab.MergeRequest)
@@ -149,12 +149,26 @@ func (_m *MergeRequest) Get(projectId gitlab.NameOrId, mergeRequestId int) (*go_
 
 	var r1 error
 	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, int) error); ok {
-		r1 = rf(projectId, mergeRequestId)
+		r1 = rf(projectID, mergeRequestID)
 	} else {
 		r1 = ret.Error(1)
 	}
 
 	return r0, r1
+}
+
+// ResetApproval provides a mock function with given fields: projectID, mergeRequestID
+func (_m *MergeRequest) ResetApproval(projectID gitlab.NameOrId, mergeRequestID int) error {
+	ret := _m.Called(projectID, mergeRequestID)
+
+	var r0 error
+	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, int) error); ok {
+		r0 = rf(projectID, mergeRequestID)
+	} else {
+		r0 = ret.Error(0)
+	}
+
+	return r0
 }
 
 type mockConstructorTestingTNewMergeRequest interface {

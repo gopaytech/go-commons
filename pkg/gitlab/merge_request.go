@@ -20,18 +20,35 @@ const (
 )
 
 type MergeRequest interface {
-	Get(projectId NameOrId, mergeRequestId int) (*gl.MergeRequest, error)
-	Create(projectId NameOrId, sourceBranch string, targetBranch string, title string) (*gl.MergeRequest, error)
-	CreateToDefault(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error)
-	CreateToMaster(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error)
-	Approve(projectId NameOrId, mergeRequestID int) error
-	Close(projectId NameOrId, mergeRequestID int) error
-	Accept(projectId NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*gl.MergeRequest, error)
+	Get(projectID NameOrId, mergeRequestID int) (*gl.MergeRequest, error)
+	Create(projectID NameOrId, sourceBranch string, targetBranch string, title string) (*gl.MergeRequest, error)
+	CreateToDefault(projectID NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error)
+	CreateToMaster(projectID NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error)
+	Approve(projectID NameOrId, mergeRequestID int) error
+	Close(projectID NameOrId, mergeRequestID int) error
+	Accept(projectID NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*gl.MergeRequest, error)
+	ResetApproval(projectID NameOrId, mergeRequestID int) error
 }
 
 type mergeRequest struct {
 	client  *gl.Client
 	project Project
+}
+
+func (e *mergeRequest) ResetApproval(projectID NameOrId, mergeRequestID int) error {
+	rules, _, err := e.client.MergeRequestApprovals.GetApprovalRules(projectID.Get(), mergeRequestID)
+	if err != nil {
+		return err
+	}
+
+	for _, rule := range rules {
+		_, err := e.client.MergeRequestApprovals.DeleteApprovalRule(projectID, mergeRequestID, rule.ID)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 func NewMergeRequest(client *gl.Client) MergeRequest {
@@ -41,8 +58,8 @@ func NewMergeRequest(client *gl.Client) MergeRequest {
 	}
 }
 
-func (e *mergeRequest) Get(projectId NameOrId, mergeRequestId int) (*gl.MergeRequest, error) {
-	mergeRequest, _, err := e.client.MergeRequests.GetMergeRequest(projectId.Get(), mergeRequestId, &gl.GetMergeRequestsOptions{})
+func (e *mergeRequest) Get(projectID NameOrId, mergeRequestID int) (*gl.MergeRequest, error) {
+	mergeRequest, _, err := e.client.MergeRequests.GetMergeRequest(projectID.Get(), mergeRequestID, &gl.GetMergeRequestsOptions{})
 	if err != nil {
 		return nil, err
 	}
@@ -50,26 +67,26 @@ func (e *mergeRequest) Get(projectId NameOrId, mergeRequestId int) (*gl.MergeReq
 	return mergeRequest, err
 }
 
-func (e *mergeRequest) CreateToDefault(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error) {
-	branch, err := e.project.GetDefaultBranch(projectId)
+func (e *mergeRequest) CreateToDefault(projectID NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error) {
+	branch, err := e.project.GetDefaultBranch(projectID)
 	if err != nil {
 		return nil, err
 	}
 
-	return e.Create(projectId, sourceBranch, branch.Name, title)
+	return e.Create(projectID, sourceBranch, branch.Name, title)
 }
 
-func (e *mergeRequest) CreateToMaster(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error) {
-	branch, err := e.project.GetBranchByName(projectId, MasterBranchName)
+func (e *mergeRequest) CreateToMaster(projectID NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error) {
+	branch, err := e.project.GetBranchByName(projectID, MasterBranchName)
 	if err != nil {
 		return nil, err
 	}
 
-	return e.Create(projectId, sourceBranch, branch.Name, title)
+	return e.Create(projectID, sourceBranch, branch.Name, title)
 }
 
-func (e *mergeRequest) Create(projectId NameOrId, sourceBranch string, targetBranch string, title string) (*gl.MergeRequest, error) {
-	mergeRequest, _, err := e.client.MergeRequests.CreateMergeRequest(projectId.Get(), &gl.CreateMergeRequestOptions{
+func (e *mergeRequest) Create(projectID NameOrId, sourceBranch string, targetBranch string, title string) (*gl.MergeRequest, error) {
+	mergeRequest, _, err := e.client.MergeRequests.CreateMergeRequest(projectID.Get(), &gl.CreateMergeRequestOptions{
 		SourceBranch: gl.String(sourceBranch),
 		TargetBranch: gl.String(targetBranch),
 		Title:        &title,
@@ -81,21 +98,21 @@ func (e *mergeRequest) Create(projectId NameOrId, sourceBranch string, targetBra
 	return mergeRequest, err
 }
 
-func (e *mergeRequest) Approve(projectId NameOrId, mergeRequestID int) error {
-	_, _, err := e.client.MergeRequestApprovals.ApproveMergeRequest(projectId.Get(), mergeRequestID, &gl.ApproveMergeRequestOptions{})
+func (e *mergeRequest) Approve(projectID NameOrId, mergeRequestID int) error {
+	_, _, err := e.client.MergeRequestApprovals.ApproveMergeRequest(projectID.Get(), mergeRequestID, &gl.ApproveMergeRequestOptions{})
 	return err
 }
 
-func (e *mergeRequest) Close(projectId NameOrId, mergeRequestID int) error {
+func (e *mergeRequest) Close(projectID NameOrId, mergeRequestID int) error {
 	newState := StateClosed
-	_, _, err := e.client.MergeRequests.UpdateMergeRequest(projectId.Get(), mergeRequestID, &gl.UpdateMergeRequestOptions{
+	_, _, err := e.client.MergeRequests.UpdateMergeRequest(projectID.Get(), mergeRequestID, &gl.UpdateMergeRequestOptions{
 		StateEvent: gl.String(string(newState)),
 	})
 	return err
 }
 
-func (e *mergeRequest) Accept(projectId NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*gl.MergeRequest, error) {
-	mr, _, err := e.client.MergeRequests.AcceptMergeRequest(projectId.Get(), mergeRequestID, &gl.AcceptMergeRequestOptions{
+func (e *mergeRequest) Accept(projectID NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*gl.MergeRequest, error) {
+	mr, _, err := e.client.MergeRequests.AcceptMergeRequest(projectID.Get(), mergeRequestID, &gl.AcceptMergeRequestOptions{
 		ShouldRemoveSourceBranch:  gl.Bool(removeBranch),
 		MergeWhenPipelineSucceeds: gl.Bool(whenPipelinePassed),
 	})
