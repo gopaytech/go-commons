@@ -1,3 +1,10 @@
+## [0.27.2](https://github.com/gopaytech/go-commons/compare/v0.27.1...v0.27.2) (2022-09-29)
+
+
+### Bug Fixes
+
+* add option to accept mr when pipeline succeed ([407ef67](https://github.com/gopaytech/go-commons/commit/407ef678872ed1c3cc0e2df7053bd6cb84f6b844))
+
 ## [0.27.1](https://github.com/gopaytech/go-commons/compare/v0.27.0...v0.27.1) (2022-09-27)
 
 
