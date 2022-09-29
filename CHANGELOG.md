@@ -1,3 +1,10 @@
+## [0.28.1](https://github.com/gopaytech/go-commons/compare/v0.28.0...v0.28.1) (2022-09-29)
+
+
+### Bug Fixes
+
+* give proper project ID ([282a2d9](https://github.com/gopaytech/go-commons/commit/282a2d947be553eb363369c01b6dbcbac5d03125))
+
 # [0.28.0](https://github.com/gopaytech/go-commons/compare/v0.27.3...v0.28.0) (2022-09-29)
 
 
