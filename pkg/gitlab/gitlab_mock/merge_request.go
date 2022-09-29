@@ -14,13 +14,13 @@ type MergeRequest struct {
 	mock.Mock
 }
 
-// Accept provides a mock function with given fields: projectId, mergeRequestID, removeBranch
-func (_m *MergeRequest) Accept(projectId gitlab.NameOrId, mergeRequestID int, removeBranch bool) (*go_gitlab.MergeRequest, error) {
-	ret := _m.Called(projectId, mergeRequestID, removeBranch)
+// Accept provides a mock function with given fields: projectId, mergeRequestID, removeBranch, whenPipelinePassed
+func (_m *MergeRequest) Accept(projectId gitlab.NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*go_gitlab.MergeRequest, error) {
+	ret := _m.Called(projectId, mergeRequestID, removeBranch, whenPipelinePassed)
 
 	var r0 *go_gitlab.MergeRequest
-	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, int, bool) *go_gitlab.MergeRequest); ok {
-		r0 = rf(projectId, mergeRequestID, removeBranch)
+	if rf, ok := ret.Get(0).(func(gitlab.NameOrId, int, bool, bool) *go_gitlab.MergeRequest); ok {
+		r0 = rf(projectId, mergeRequestID, removeBranch, whenPipelinePassed)
 	} else {
 		if ret.Get(0) != nil {
 			r0 = ret.Get(0).(*go_gitlab.MergeRequest)
@@ -28,8 +28,8 @@ func (_m *MergeRequest) Accept(projectId gitlab.NameOrId, mergeRequestID int, re
 	}
 
 	var r1 error
-	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, int, bool) error); ok {
-		r1 = rf(projectId, mergeRequestID, removeBranch)
+	if rf, ok := ret.Get(1).(func(gitlab.NameOrId, int, bool, bool) error); ok {
+		r1 = rf(projectId, mergeRequestID, removeBranch, whenPipelinePassed)
 	} else {
 		r1 = ret.Error(1)
 	}

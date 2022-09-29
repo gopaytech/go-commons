@@ -26,7 +26,7 @@ type MergeRequest interface {
 	CreateToMaster(projectId NameOrId, sourceBranch string, title string) (*gl.MergeRequest, error)
 	Approve(projectId NameOrId, mergeRequestID int) error
 	Close(projectId NameOrId, mergeRequestID int) error
-	Accept(projectId NameOrId, mergeRequestID int, removeBranch bool) (*gl.MergeRequest, error)
+	Accept(projectId NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*gl.MergeRequest, error)
 }
 
 type mergeRequest struct {
@@ -94,9 +94,10 @@ func (e *mergeRequest) Close(projectId NameOrId, mergeRequestID int) error {
 	return err
 }
 
-func (e *mergeRequest) Accept(projectId NameOrId, mergeRequestID int, removeBranch bool) (*gl.MergeRequest, error) {
+func (e *mergeRequest) Accept(projectId NameOrId, mergeRequestID int, removeBranch bool, whenPipelinePassed bool) (*gl.MergeRequest, error) {
 	mr, _, err := e.client.MergeRequests.AcceptMergeRequest(projectId.Get(), mergeRequestID, &gl.AcceptMergeRequestOptions{
-		ShouldRemoveSourceBranch: gl.Bool(removeBranch),
+		ShouldRemoveSourceBranch:  gl.Bool(removeBranch),
+		MergeWhenPipelineSucceeds: gl.Bool(whenPipelinePassed),
 	})
 	if err != nil {
 		return nil, err
