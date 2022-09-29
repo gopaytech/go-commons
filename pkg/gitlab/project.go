@@ -19,7 +19,7 @@ type project struct {
 }
 
 func (p *project) CreateMinimalMRApproval(id NameOrId, minimalApproval int) (*gl.Project, error) {
-	project, _, err := p.client.Projects.EditProject(id.ID, &gl.EditProjectOptions{
+	project, _, err := p.client.Projects.EditProject(id.Get(), &gl.EditProjectOptions{
 		ApprovalsBeforeMerge: &minimalApproval,
 	})
 	return project, err
