@@ -1,3 +1,10 @@
+# [0.29.0](https://github.com/gopaytech/go-commons/compare/v0.28.1...v0.29.0) (2022-10-18)
+
+
+### Features
+
+* add feature to get repostiory file ([3d432ca](https://github.com/gopaytech/go-commons/commit/3d432ca49790c9721eeba90c2e12ec58e581c19e))
+
 ## [0.28.1](https://github.com/gopaytech/go-commons/compare/v0.28.0...v0.28.1) (2022-09-29)
 
 
