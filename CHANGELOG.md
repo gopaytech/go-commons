@@ -1,3 +1,10 @@
+# [0.30.0](https://github.com/gopaytech/go-commons/compare/v0.29.0...v0.30.0) (2023-02-27)
+
+
+### Features
+
+* add Gitlab Group Env with Parent ([52336c8](https://github.com/gopaytech/go-commons/commit/52336c85e077c30b8498b23b0fdef91580d94fd6))
+
 # [0.29.0](https://github.com/gopaytech/go-commons/compare/v0.28.1...v0.29.0) (2022-10-18)
 
 
