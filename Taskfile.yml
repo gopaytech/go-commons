@@ -43,5 +43,23 @@ tasks:
       - go test -v -race -tags=local,integration -coverprofile={{.COVERAGE_DIR}}/coverage.out -covermode=atomic ./...
       - go tool cover -html={{.COVERAGE_DIR}}/coverage.out -o {{.COVERAGE_DIR}}/coverage.html
 
+  install-dev:
+    desc: Install development tools
+    cmds:
+      - go install github.com/vektra/mockery/v2@v2.20.0
 
+  gitlab-mock:
+    desc: Generate mock
+    dir: pkg/gitlab
+    cmds:
+      - mockery --all --case=underscore --output ./gitlab_mock --outpkg gitlab_mock
 
+  tmpl-mock:
+    desc: Generate mock
+    dir: pkg/tmpl
+    cmds:
+      - mockery --all --case=underscore --output ./tmpl_mock --outpkg tmpl_mock
+
+  mock:
+    desc: Generate mock
+    deps: [ gitlab-mock,tmpl-mock ]
