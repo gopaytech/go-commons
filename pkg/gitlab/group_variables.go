@@ -4,6 +4,7 @@ import gl "github.com/xanzy/go-gitlab"
 
 type GroupVariables interface {
 	GetVariable(gid interface{}, key string) (*gl.GroupVariable, error)
+	GetVariables(groupID int, recursive bool) (map[string]string, error)
 }
 
 type groupVariables struct {
