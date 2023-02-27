@@ -1,3 +1,10 @@
+## [0.30.2](https://github.com/gopaytech/go-commons/compare/v0.30.1...v0.30.2) (2023-02-27)
+
+
+### Bug Fixes
+
+* upgrade go-gitlab version and fix typo ([3e27ea0](https://github.com/gopaytech/go-commons/commit/3e27ea02c18c43546ae093771654e3fb19010b97))
+
 ## [0.30.1](https://github.com/gopaytech/go-commons/compare/v0.30.0...v0.30.1) (2023-02-27)
 
 
