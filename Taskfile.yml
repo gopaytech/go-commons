@@ -21,6 +21,7 @@ tasks:
     desc: Run Go vendor
     cmds:
       - echo {{.CURRENT_DIR}}
+      - go mod tidy
       - go mod vendor
     silent: true
 

@@ -47,7 +47,7 @@ func (g *group) ListAllProjects(id NameOrId) (<-chan gl.Project, error) {
 		PerPage: 25,
 	}
 
-	opts := &gl.ListGroupProjectsOptions{IncludeSubgroups: gl.Bool(true), ListOptions: listOpts}
+	opts := &gl.ListGroupProjectsOptions{IncludeSubGroups: gl.Bool(true), ListOptions: listOpts}
 	result, response, err := g.client.Groups.ListGroupProjects(id.Get(), opts)
 	if err != nil {
 		return projects, err
@@ -72,7 +72,7 @@ func (g *group) ListAllProjects(id NameOrId) (<-chan gl.Project, error) {
 				PerPage: 25,
 			}
 
-			iOps := &gl.ListGroupProjectsOptions{IncludeSubgroups: gl.Bool(true), ListOptions: lOps}
+			iOps := &gl.ListGroupProjectsOptions{IncludeSubGroups: gl.Bool(true), ListOptions: lOps}
 			iResult, _, ierr := g.client.Groups.ListGroupProjects(id.Get(), iOps)
 			if ierr == nil && iResult != nil {
 				for _, p := range iResult {
