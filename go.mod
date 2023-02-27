@@ -20,7 +20,7 @@ require (
 	github.com/spf13/viper v1.10.0
 	github.com/stretchr/testify v1.8.1
 	github.com/xanzy/go-gitlab v0.80.2
-	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
+	golang.org/x/crypto v0.1.0
 	gopkg.in/alexcesaro/statsd.v2 v2.0.0
 	gorm.io/driver/mysql v1.1.2
 	gorm.io/driver/postgres v1.1.2
