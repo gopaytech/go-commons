@@ -1,3 +1,10 @@
+## [0.30.1](https://github.com/gopaytech/go-commons/compare/v0.30.0...v0.30.1) (2023-02-27)
+
+
+### Bug Fixes
+
+* add GetVariables function to interface to register it ([6656a97](https://github.com/gopaytech/go-commons/commit/6656a977cfb1f724cf945017641047bb12f2f127))
+
 # [0.30.0](https://github.com/gopaytech/go-commons/compare/v0.29.0...v0.30.0) (2023-02-27)
 
 
