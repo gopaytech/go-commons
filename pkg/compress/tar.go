@@ -2,7 +2,9 @@ package compress
 
 import (
 	"archive/tar"
+	"bytes"
 	"compress/gzip"
+	"encoding/base64"
 	"fmt"
 	"io"
 	"os"
@@ -63,10 +65,35 @@ func TarGz(sourceDirectory string, writer io.Writer) (err error) {
 	gzWriter := gzip.NewWriter(writer)
 	defer gzWriter.Close()
 	return Tar(sourceDirectory, gzWriter)
-
 }
 
-func UnTarGz(src io.Reader, dst string) (totalWritten int64, err error) {
+func TarGzBase64(sourceDirectory string) (string, error) {
+	var buf bytes.Buffer
+	encoder := base64.NewEncoder(base64.StdEncoding, &buf)
+
+	err := TarGz(sourceDirectory, encoder)
+	if err != nil {
+		return "", err
+	}
+
+	err = encoder.Close()
+	if err != nil {
+		return "", err
+	}
+
+	return buf.String(), nil
+}
+
+func UnTarGzBase64(encoded string, destinationDir string) (totalWritten int64, err error) {
+	decoded, err := base64.StdEncoding.DecodeString(encoded)
+	if err != nil {
+		return
+	}
+
+	return UnTarGz(bytes.NewReader(decoded), destinationDir)
+}
+
+func UnTarGz(src io.Reader, destinationDir string) (totalWritten int64, err error) {
 	zipReader, errReader := gzip.NewReader(src)
 	if errReader != nil {
 		err = errReader
@@ -74,10 +101,19 @@ func UnTarGz(src io.Reader, dst string) (totalWritten int64, err error) {
 	}
 	defer zipReader.Close()
 
-	return UnTar(zipReader, dst)
+	return UnTar(zipReader, destinationDir)
 }
 
-func UnTar(src io.Reader, dst string) (written int64, err error) {
+func UnTar(src io.Reader, destinationDir string) (written int64, err error) {
+	info, err := os.Stat(destinationDir)
+	if err != nil {
+		return 0, err
+	}
+
+	if !info.IsDir() {
+		return 0, fmt.Errorf("%s is not a directory", destinationDir)
+	}
+
 	tarReader := tar.NewReader(src)
 
 	validPath := func(path string) bool {
@@ -105,7 +141,7 @@ func UnTar(src io.Reader, dst string) (written int64, err error) {
 			return totalWritten, fmt.Errorf("tar contained invalid path %s\n", header.Name)
 		}
 
-		target := filepath.Join(dst, header.Name)
+		target := filepath.Join(destinationDir, header.Name)
 
 		switch header.Typeflag {
 

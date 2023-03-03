@@ -108,3 +108,48 @@ func TestTarGz(t *testing.T) {
 	err = TarGz(destinationDir, destinationFile)
 	assert.Nil(t, err)
 }
+
+func TestTarGzBase64(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar.gz")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-tar-gz")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	written, err := UnTarGz(archiveReader, destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, written)
+
+	base64, err := TarGzBase64(destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, base64)
+}
+func TestUnTarGzBase64(t *testing.T) {
+	archiveReader, err := os.Open("test_archive.tar.gz")
+	assert.Nil(t, err)
+	assert.NotNil(t, archiveReader)
+
+	destinationDir, err := ioutil.TempDir("/tmp", "test-tar-gz")
+	fmt.Printf("created temp dir: %s", destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, destinationDir)
+
+	written, err := UnTarGz(archiveReader, destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, written)
+
+	base64, err := TarGzBase64(destinationDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, base64)
+
+	destinationUnTarDir, err := os.MkdirTemp("/tmp", "test-untar-gz")
+	assert.Nil(t, err)
+	assert.NotNil(t, base64)
+
+	gzBase64, err := UnTarGzBase64(base64, destinationUnTarDir)
+	assert.Nil(t, err)
+	assert.NotNil(t, gzBase64)
+}
