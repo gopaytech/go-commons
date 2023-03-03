@@ -1,3 +1,10 @@
+# [0.31.0](https://github.com/gopaytech/go-commons/compare/v0.30.2...v0.31.0) (2023-03-03)
+
+
+### Features
+
+* add Base64 encoding for tar and tar.gz ([f778a8f](https://github.com/gopaytech/go-commons/commit/f778a8f784a146bc3715242ec1c58280c516c962))
+
 ## [0.30.2](https://github.com/gopaytech/go-commons/compare/v0.30.1...v0.30.2) (2023-02-27)
 
 
