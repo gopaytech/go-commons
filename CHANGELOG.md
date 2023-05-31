@@ -1,3 +1,10 @@
+## [0.32.2](https://github.com/gopaytech/go-commons/compare/v0.32.1...v0.32.2) (2023-05-31)
+
+
+### Bug Fixes
+
+* regenerate mock file using latest mockery version 2.28.1 ([3677d03](https://github.com/gopaytech/go-commons/commit/3677d03e6c27301d0d82be8535b09253b3651923))
+
 ## [0.32.1](https://github.com/gopaytech/go-commons/compare/v0.32.0...v0.32.1) (2023-05-31)
 
 
