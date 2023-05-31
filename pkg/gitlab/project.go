@@ -10,7 +10,7 @@ type Project interface {
 	Get(id NameOrId) (*gl.Project, error)
 	GetDefaultBranch(id NameOrId) (*gl.Branch, error)
 	GetBranchByName(id NameOrId, name string) (*gl.Branch, error)
-	CreateProject(name string, parentID int, visibility gl.VisibilityValue) (*gl.Project, error)
+	CreateProject(name string, parentID int, visibility gl.VisibilityValue, defaultBranch string) (*gl.Project, error)
 	CreateMinimalMRApproval(id NameOrId, minimalApproval int) (*gl.Project, error)
 }
 
