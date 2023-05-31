@@ -1,3 +1,10 @@
+# [0.32.0](https://github.com/gopaytech/go-commons/compare/v0.31.0...v0.32.0) (2023-05-31)
+
+
+### Features
+
+* force add default branch name on create project func ([b55cf09](https://github.com/gopaytech/go-commons/commit/b55cf090f9e847de9dae0b4b44d6b00598b15883))
+
 # [0.31.0](https://github.com/gopaytech/go-commons/compare/v0.30.2...v0.31.0) (2023-03-03)
 
 
