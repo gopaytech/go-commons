@@ -1,3 +1,10 @@
+## [0.32.1](https://github.com/gopaytech/go-commons/compare/v0.32.0...v0.32.1) (2023-05-31)
+
+
+### Bug Fixes
+
+* adding defaultBranch argument on CreateProject interface ([45d288b](https://github.com/gopaytech/go-commons/commit/45d288b840b1dcad96cb98fcc40a869f4454cf21))
+
 # [0.32.0](https://github.com/gopaytech/go-commons/compare/v0.31.0...v0.32.0) (2023-05-31)
 
 
