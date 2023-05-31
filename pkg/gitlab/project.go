@@ -25,7 +25,7 @@ func (p *project) CreateMinimalMRApproval(id NameOrId, minimalApproval int) (*gl
 	return project, err
 }
 
-func (p *project) CreateProject(name string, parentID int, visibility gl.VisibilityValue) (*gl.Project, error) {
+func (p *project) CreateProject(name string, parentID int, visibility gl.VisibilityValue, defaultBranch string) (*gl.Project, error) {
 	initializeWithReadme := true
 	project, _, err := p.client.Projects.CreateProject(&gl.CreateProjectOptions{
 		Name:                 &name,
@@ -33,6 +33,7 @@ func (p *project) CreateProject(name string, parentID int, visibility gl.Visibil
 		Path:                 nil,
 		Visibility:           gl.Visibility(visibility),
 		InitializeWithReadme: &initializeWithReadme,
+		DefaultBranch:        &defaultBranch,
 	})
 	return project, err
 }
